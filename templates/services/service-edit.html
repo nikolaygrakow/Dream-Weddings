@@ -3,12 +3,58 @@
 {% block title %}Edit Service{% endblock %}
 
 {% block content %}
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Changes</button>
-        <a href="{% url 'services:details' service.pk %}" class="btn cancel-btn">
-            Cancel
-        </a>
-    </form>
+
+<!-- ===== EDIT SERVICE SECTION ===== -->
+<section class="wedding-form-section">
+
+    <div class="wedding-form-header">
+        <span>PERFECT EVERY DETAIL</span>
+
+        <h1>Edit Service</h1>
+
+        <p>
+            Update your professional information and make sure
+            every detail reflects the services you offer.
+        </p>
+    </div>
+
+    <!-- ===== EDIT SERVICE FORM ===== -->
+    <div class="wedding-form-container">
+
+        <div class="wedding-form-intro">
+            <span>UPDATE WEDDING SERVICE</span>
+
+            <h2>Refine Your Details</h2>
+
+            <p>
+                Make the changes you need and keep
+                your service information up to date.
+            </p>
+        </div>
+
+        <form method="POST" class="wedding-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <!-- ===== FORM ACTIONS ===== -->
+            <div class="wedding-form-actions">
+
+                <button type="submit" class="wedding-form-submit">
+                    SAVE CHANGES
+                </button>
+
+                <a href="{% url 'services:details' service.pk %}"
+                   class="wedding-form-cancel">
+                    CANCEL
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
 {% endblock %}

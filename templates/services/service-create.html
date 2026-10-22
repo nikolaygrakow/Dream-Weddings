@@ -4,19 +4,61 @@
 
 {% block content %}
 
-    <h1>Create Service</h1>
-    <form method="POST" class="service-form">
-        {% csrf_token %}
+<!-- ===== CREATE SERVICE SECTION ===== -->
+<section class="wedding-form-section">
 
-        {{ form.as_p }}
+    <div class="wedding-form-header">
+        <span>BRING YOUR TALENT TO LIFE</span>
 
-        <button type="submit" class="btn create-btn">
-            Create
-        </button>
+        <h1>Create a Service</h1>
 
-        <a href="{% url 'services:list' %}" class="btn cancel-btn">
-            Cancel
-        </a>
-    </form>
+        <p>
+            Add a new wedding professional and help couples
+            find the perfect services for their special day.
+        </p>
+    </div>
+
+    <!-- ===== CREATE SERVICE FORM ===== -->
+    <div class="wedding-form-container">
+
+        <div class="wedding-form-intro">
+            <span>NEW WEDDING SERVICE</span>
+            <h2>Share Your Expertise</h2>
+            <p>Fill in the details below to create a new service.</p>
+        </div>
+
+        <form method="POST" class="wedding-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="wedding-form-actions">
+
+                <button type="submit" class="wedding-form-submit">
+                    CREATE SERVICE
+                </button>
+
+                {% if request.GET.category %}
+
+                    <a href="{% url 'services:category' request.GET.category %}"
+                       class="wedding-form-cancel">
+                        CANCEL
+                    </a>
+
+                {% else %}
+
+                    <a href="{% url 'services:list' %}"
+                       class="wedding-form-cancel">
+                        CANCEL
+                    </a>
+
+                {% endif %}
+
+            </div>
+        </form>
+
+    </div>
+
+</section>
 
 {% endblock %}

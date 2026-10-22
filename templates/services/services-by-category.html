@@ -4,27 +4,77 @@
 
 {% block content %}
 
-<h1>{{ view.kwargs.category }}</h1>
+<!-- ===== SERVICES BY CATEGORY SECTION ===== -->
+<section class="services-category-section">
 
-<div class="weddings-container">
-    {% for service in services %}
-        <div class="wedding-card">
+    <div class="services-category-header">
+        <span>DISCOVER OUR PROFESSIONALS</span>
 
-            <h3>{{ service.name }}</h3>
+        <h1>{{ view.kwargs.category }}</h1>
 
-            <a href="{% url 'services:details' service.pk %}">View Details</a>
+        <p>
+            Explore our carefully selected wedding professionals
+            and find the perfect match for your special day.
+        </p>
+    </div>
 
-        </div>
-    {% empty %}
-        <p>No services available.</p>
-    {% endfor %}
+    <!-- ===== SERVICES LIST ===== -->
+    <div class="services-category-grid">
 
-</div>
-<a href="{% url 'services:create' %}?category={{ view.kwargs.category }}"
-   class="btn create-btn">
-    Add Service
-</a>
+        {% for service in services %}
 
-<a href="{% url 'services:list' %}">Back to Categories</a>
+            <div class="services-category-card">
+
+                <div class="services-category-card-top">
+                    <span>WEDDING PROFESSIONAL</span>
+
+                    <h2>{{ service.name }}</h2>
+
+                    <div class="services-category-divider"></div>
+
+                    <p>
+                        Discover more about this professional
+                        and the services they offer.
+                    </p>
+                </div>
+
+                <a href="{% url 'services:details' service.pk %}"
+                   class="services-category-details-btn">
+                    VIEW DETAILS →
+                </a>
+
+            </div>
+
+        {% empty %}
+
+            <div class="services-category-empty">
+                <h2>No Services Available Yet</h2>
+
+                <p>
+                    There are currently no professionals in this category.
+                    Be the first to add one!
+                </p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- ===== PAGE ACTIONS ===== -->
+    <div class="services-category-actions">
+
+        <a href="{% url 'services:create' %}?category={{ view.kwargs.category }}"
+           class="services-category-add-btn">
+            + ADD NEW SERVICE
+        </a>
+
+        <a href="{% url 'services:list' %}"
+           class="services-category-back-btn">
+            ← BACK TO CATEGORIES
+        </a>
+
+    </div>
+
+</section>
 
 {% endblock %}

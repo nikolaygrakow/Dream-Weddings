@@ -1,44 +1,86 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Categories{% endblock %}
+{% block title %}Our Services{% endblock %}
 
 {% block content %}
-<h1>Our Services</h1>
 
-<div class="weddings-container">
+<!-- ===== SERVICES CATEGORIES SECTION ===== -->
+<section class="services-categories-section">
 
-    <div class="wedding-card">
-        <a href="{% url 'services:category' 'Photography' %}">
-            <img src="{% static 'images/photography.jpg' %}" alt="Photography">
+    <div class="services-categories-header">
+        <span>THE DETAILS THAT MAKE IT SPECIAL</span>
 
-            <h3>Photography</h3>
-        </a>
+        <h1>Our Wedding Services</h1>
+
+        <p>
+            Every unforgettable celebration is made of beautiful details.
+            Explore our carefully selected services and find the perfect
+            professionals to bring your wedding vision to life.
+        </p>
     </div>
 
-    <div class="wedding-card">
-        <a href="{% url 'services:category' 'Videography' %}">
-            <img src="{% static 'images/video.jpg' %}" alt="Videography">
+    <!-- ===== CATEGORY CARDS ===== -->
+    <div class="services-categories-grid">
 
-            <h3>Videography</h3>
+        <a href="{% url 'services:category' 'Photography' %}"
+           class="service-category-card">
+
+            <img src="{% static 'images/photography.jpg' %}"
+                 alt="Wedding Photography">
+
+            <div class="service-category-overlay">
+                <span>01 / CAPTURE EVERY MOMENT</span>
+                <h2>Photography</h2>
+                <p>EXPLORE SERVICES →</p>
+            </div>
         </a>
+
+        <a href="{% url 'services:category' 'Videography' %}"
+           class="service-category-card">
+
+            <img src="{% static 'images/video.jpg' %}"
+                 alt="Wedding Videography">
+
+            <div class="service-category-overlay">
+                <span>02 / RELIVE YOUR STORY</span>
+                <h2>Videography</h2>
+                <p>EXPLORE SERVICES →</p>
+            </div>
+        </a>
+
+        <a href="{% url 'services:category' 'DJ' %}"
+           class="service-category-card">
+
+            <img src="{% static 'images/dj.jpg' %}"
+                 alt="Wedding DJ">
+
+            <div class="service-category-overlay">
+                <span>03 / SET THE MOOD</span>
+                <h2>DJ</h2>
+                <p>EXPLORE SERVICES →</p>
+            </div>
+        </a>
+
+        <a href="{% url 'services:category' 'Decoration' %}"
+           class="service-category-card">
+
+            <img src="{% static 'images/decoration.jpg' %}"
+                 alt="Wedding Decoration">
+
+            <div class="service-category-overlay">
+                <span>04 / CREATE THE ATMOSPHERE</span>
+                <h2>Decoration</h2>
+                <p>EXPLORE SERVICES →</p>
+            </div>
+        </a>
+
     </div>
 
-    <div class="wedding-card">
-        <a href="{% url 'services:category' 'DJ' %}">
-            <img src="{% static 'images/dj.jpg' %}" alt="DJ">
-
-            <h3>DJ</h3>
-        </a>
+    <div class="services-categories-footer">
+        <p>Thoughtfully selected services for a celebration as unique as your love.</p>
     </div>
 
-    <div class="wedding-card">
-        <a href="{% url 'services:category' 'Decoration' %}">
-            <img src="{% static 'images/decoration.jpg' %}" alt="Decoration">
+</section>
 
-            <h3>Decoration</h3>
-        </a>
-    </div>
-
-</div>
 {% endblock %}

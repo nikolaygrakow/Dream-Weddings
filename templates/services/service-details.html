@@ -3,18 +3,81 @@
 {% block title %}{{ service.name }} Details{% endblock %}
 
 {% block content %}
-    <h1>{{ service.name }}</h1>
 
-    <p><strong>Category:</strong> {{ service.category }}</p>
+<!-- ===== SERVICE DETAILS SECTION ===== -->
+<section class="service-details-section">
 
-    <p><strong>Phone:</strong> {{ service.phone }}</p>
+    <div class="service-details-header">
+        <span>MEET OUR WEDDING PROFESSIONALS</span>
 
-    <p>{{ service.description }}</p>
+        <h1>{{ service.name }}</h1>
 
-    <div class="service-actions">
-        <a href="{% url 'services:edit' service.pk %}" class="btn edit-btn">Edit Service</a>
-        <a href="{% url 'services:list' %}" class="btn back-btn">Back to Services</a>
-        <a href="{% url 'services:delete' service.pk %}" class="btn delete-btn">Delete Service</a>
+        <p>
+            Discover the people and services that help
+            make every wedding celebration unforgettable.
+        </p>
     </div>
+
+    <!-- ===== SERVICE INFORMATION ===== -->
+    <div class="service-details-container">
+
+        <div class="service-details-intro">
+            <span>PROFESSIONAL SERVICE</span>
+
+            <h2>{{ service.name }}</h2>
+
+            <div class="service-details-divider"></div>
+        </div>
+
+        <div class="service-details-info">
+
+            <div class="service-details-info-item">
+                <span>CATEGORY</span>
+                <p>{{ service.category }}</p>
+            </div>
+
+            <div class="service-details-info-item">
+                <span>CONTACT PHONE</span>
+                <p>{{ service.phone }}</p>
+            </div>
+
+        </div>
+
+        <!-- ===== ABOUT THE SERVICE ===== -->
+        <div class="service-details-description">
+            <span>ABOUT THIS SERVICE</span>
+
+            <h3>Creating Beautiful Moments</h3>
+
+            <p>{{ service.description }}</p>
+        </div>
+
+        <!-- ===== SERVICE ACTIONS ===== -->
+        <div class="service-details-actions">
+
+            <a href="{% url 'services:edit' service.pk %}"
+               class="service-details-edit-btn">
+                EDIT SERVICE
+            </a>
+
+            <a href="{% url 'services:delete' service.pk %}"
+               class="service-details-delete-btn">
+                DELETE SERVICE
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- ===== BACK NAVIGATION ===== -->
+    <div class="service-details-back">
+
+        <a href="{% url 'services:category' service.category %}">
+            ← BACK TO {{ service.category|upper }}
+        </a>
+
+    </div>
+
+</section>
 
 {% endblock %}

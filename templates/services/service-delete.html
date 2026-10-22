@@ -3,17 +3,57 @@
 {% block title %}Delete Service{% endblock %}
 
 {% block content %}
-    <h1>Delete Service</h1>
 
-    <p>Are you sure you want to delete this service?</p>
+<!-- ===== DELETE SERVICE SECTION ===== -->
+<section class="service-delete-section">
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="service-delete-container">
 
-        <button type="submit">Confirm Delete</button>
-        <a href="{% url 'services:details' service.pk %}" class="btn cancel-btn">
-            Cancel
-        </a>
-    </form>
+        <!-- ===== WARNING ICON ===== -->
+        <div class="service-delete-icon">
+            !
+        </div>
+
+        <span class="service-delete-label">PLEASE CONFIRM YOUR ACTION</span>
+
+        <h1>Delete Service?</h1>
+
+        <p class="service-delete-subtitle">
+            Are you sure you want to delete this wedding service?
+        </p>
+
+        <!-- ===== SERVICE NAME ===== -->
+        <div class="service-delete-name">
+            {{ service.name }}
+        </div>
+
+        <p class="service-delete-warning">
+            This action cannot be undone. The service will be
+            permanently removed from your wedding professionals.
+        </p>
+
+        <!-- ===== DELETE CONFIRMATION FORM ===== -->
+        <form method="POST" class="service-delete-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="service-delete-actions">
+
+                <button type="submit" class="service-delete-confirm-btn">
+                    YES, DELETE SERVICE
+                </button>
+
+                <a href="{% url 'services:details' service.pk %}"
+                   class="service-delete-cancel-btn">
+                    CANCEL
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</section>
+
 {% endblock %}

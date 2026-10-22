@@ -1,20 +1,48 @@
 {% extends 'base.html' %}
 
-{% block title %}Create Wedding{% endblock %}
+{% block title %}Create Wedding Package{% endblock %}
 
 {% block content %}
-    <h1>Create Wedding</h1>
-    <form method="POST" class="wedding-form">
-        {% csrf_token %}
 
-        {{ form.as_p }}
+<section class="wedding-form-section">
 
-        <button type="submit" class="btn create-btn">
-            Create
-        </button>
+    <div class="wedding-form-header">
+        <span class="wedding-form-label">CREATE SOMETHING BEAUTIFUL</span>
 
-        <a href="{% url 'weddings:list' %}" class="btn cancel-btn">
-            Cancel
-        </a>
-    </form>
+        <h1>Create Your Wedding Package</h1>
+
+        <p>
+            Every unforgettable celebration begins with a vision.
+            Bring yours to life by creating a beautiful wedding package.
+        </p>
+    </div>
+
+    <div class="wedding-form-container">
+
+        <div class="wedding-form-intro">
+            <span>THE WEDDING COLLECTION</span>
+            <h2>Let's Begin Your Story</h2>
+            <p>Fill in the details below to create your wedding package.</p>
+        </div>
+
+        <form method="POST" class="wedding-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="wedding-form-actions">
+                <button type="submit" class="wedding-form-submit">
+                    CREATE PACKAGE →
+                </button>
+
+                <a href="{% url 'weddings:list' %}" class="wedding-form-cancel">
+                    CANCEL
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+
 {% endblock %}

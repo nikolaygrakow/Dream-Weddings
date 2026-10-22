@@ -3,16 +3,49 @@
 {% block title %}Edit Wedding Package{% endblock %}
 
 {% block content %}
-    <h1>Edit Wedding Package</h1>
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+<section class="wedding-form-section">
 
-        <button type="submit">Save Changes</button>
-        <a href="{% url 'weddings:details' wedding.pk %}" class="btn cancel-btn">
-            Cancel
-        </a>
+    <div class="wedding-form-header">
+        <span class="wedding-form-label">REFINE YOUR VISION</span>
 
-    </form>
+        <h1>Edit Wedding Package</h1>
+
+        <p>
+            Every beautiful celebration deserves thoughtful details.
+            Make changes to your wedding package below.
+        </p>
+    </div>
+
+    <div class="wedding-form-container">
+
+        <div class="wedding-form-intro">
+            <span>THE WEDDING COLLECTION</span>
+
+            <h2>Perfect Every Detail</h2>
+
+            <p>Update the information for your wedding package.</p>
+        </div>
+
+        <form method="POST" class="wedding-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="wedding-form-actions">
+                <button type="submit" class="wedding-form-submit">
+                    SAVE CHANGES →
+                </button>
+
+                <a href="{% url 'weddings:details' wedding.pk %}"
+                   class="wedding-form-cancel">
+                    CANCEL
+                </a>
+            </div>
+        </form>
+
+    </div>
+
+</section>
+
 {% endblock %}

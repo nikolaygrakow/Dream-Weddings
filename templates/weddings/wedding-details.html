@@ -1,100 +1,160 @@
 {% extends 'base.html' %}
+{% load humanize %}
 
 {% block title %}{{ wedding.name }}{% endblock %}
 
 {% block content %}
-    <h1>{{ wedding.name }}</h1>
 
-        <img
-            src="{{ wedding.image_url }}"
-            alt="{{ wedding.name }}"
-            width="500"
-            >
+<section class="wedding-detail-section">
 
-    <p>{{ wedding.description }}</p>
-
-    <p>Price: {{ wedding.price }}</p>
-
-    <p class="review-summary">
-        ⭐ {{ average_rating|floatformat:1 }}
-        ({{ review_count }} reviews)
-    </p>
-
-     <div class="service-actions">
-        <a href="{% url 'weddings:edit' wedding.pk %}" class="btn edit-btn">Edit Wedding</a>
-        <a href="{% url 'weddings:list' %}" class="btn back-btn">Back to Weddings</a>
-        <a href="{% url 'weddings:delete' wedding.pk %}" class="btn delete-btn">Delete Wedding</a>
+    <div class="wedding-detail-heading">
+        <span class="section-label">THE WEDDING COLLECTION</span>
+        <h1>{{ wedding.name }}</h1>
+        <p>A beautiful celebration begins with the perfect details.</p>
     </div>
 
-    <div>
-        <h3>Services</h3>
+    <div class="wedding-detail-layout">
 
-        <ul>
-            {% for service in wedding.services.all %}
-                <li>{{ service.name }}</li>
-            {% empty %}
-                <li>No services selected.</li>
-            {% endfor %}
-        </ul>
+        <div class="wedding-detail-image">
+            <img src="{{ wedding.image_url }}" alt="{{ wedding.name }}">
+        </div>
+
+        <div class="wedding-detail-info">
+
+            <span class="section-label">YOUR DREAM CELEBRATION</span>
+
+            <h2>A Day to Remember</h2>
+
+            <p class="wedding-detail-description">
+                {{ wedding.description }}
+            </p>
+
+            <div class="wedding-detail-price">
+                <span>PACKAGE PRICE</span>
+                <strong>{{ wedding.price|floatformat:0|intcomma }} €</strong>
+            </div>
+
+            <div class="wedding-detail-rating">
+                <span class="rating-star">★</span>
+                <strong>{{ average_rating|floatformat:1 }}</strong>
+                <span>({{ review_count }} reviews)</span>
+            </div>
+
+            <div class="wedding-detail-services">
+                <h3>What's Included</h3>
+
+                <div class="wedding-service-tags">
+                    {% for service in wedding.services.all %}
+                        <span class="wedding-service-tag">
+                            {{ service.name }}
+                        </span>
+                    {% empty %}
+                        <p class="wedding-no-services">
+                            No services selected.
+                        </p>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="wedding-detail-actions">
+                <a href="{% url 'weddings:edit' wedding.pk %}" class="wedding-edit-btn">
+                    EDIT PACKAGE
+                </a>
+
+                <a href="{% url 'weddings:delete' wedding.pk %}" class="wedding-delete-btn">
+                    DELETE PACKAGE
+                </a>
+            </div>
+
+        </div>
+
     </div>
 
-    <div>
-        <h2>Reviews</h2>
+    <div class="wedding-detail-back">
+        <a href="{% url 'weddings:list' %}">
+            ← BACK TO ALL WEDDING PACKAGES
+        </a>
+    </div>
+
+</section>
+
+
+<section class="wedding-reviews-section">
+
+    <div class="wedding-reviews-heading">
+        <span class="section-label">LOVE NOTES & EXPERIENCES</span>
+        <h2>Words From Our Couples</h2>
+        <p>Every celebration has a story worth sharing.</p>
+    </div>
+
+    <div class="wedding-reviews-container">
 
         {% with latest_review=reviews.0 %}
             {% if latest_review %}
-                <div class="review">
 
-                    <p>{{ latest_review.author_name }}</p>
+                <div class="wedding-review-card">
 
-                    <p class="rating">
+                    <div class="wedding-review-top">
+                        <h3>{{ latest_review.author_name }}</h3>
+
+                        <span class="wedding-review-date">
+                            {{ latest_review.created_at|date:"d.m.Y H:i" }}
+                        </span>
+                    </div>
+
+                    <div class="wedding-review-stars">
                         {% for i in "12345" %}
                             {% if forloop.counter <= latest_review.rating %}
-                                ⭐
+                                ★
                             {% else %}
                                 ☆
                             {% endif %}
                         {% endfor %}
-                    </p>
+                    </div>
 
-                    <p>{{ latest_review.comment }}</p>
-
-                    <p>
-                        Posted on
-                        {{ latest_review.created_at|date:"d.m.Y H:i" }}
+                    <p class="wedding-review-comment">
+                        {{ latest_review.comment }}
                     </p>
 
                 </div>
+
             {% endif %}
         {% endwith %}
 
         {% if review_count > 1 %}
 
-            <details>
-                <summary>Show all reviews ▼</summary>
+            <details class="wedding-all-reviews">
+
+                <summary>
+                    <span class="reviews-show">VIEW ALL REVIEWS ↓</span>
+                    <span class="reviews-hide">HIDE REVIEWS ↑</span>
+                </summary>
 
                 {% for review in reviews %}
                     {% if not forloop.first %}
 
-                        <div class="review">
+                        <div class="wedding-review-card">
 
-                            <p>{{ review.author_name }}</p>
+                            <div class="wedding-review-top">
+                                <h3>{{ review.author_name }}</h3>
 
-                            <p class="rating">
+                                <span class="wedding-review-date">
+                                    {{ review.created_at|date:"d.m.Y H:i" }}
+                                </span>
+                            </div>
+
+                            <div class="wedding-review-stars">
                                 {% for i in "12345" %}
                                     {% if forloop.counter <= review.rating %}
-                                        ⭐
+                                        ★
                                     {% else %}
                                         ☆
                                     {% endif %}
                                 {% endfor %}
-                            </p>
+                            </div>
 
-                            <p>{{ review.comment }}</p>
-
-                            <p>
-                                Posted on
-                                {{ review.created_at|date:"d.m.Y H:i" }}
+                            <p class="wedding-review-comment">
+                                {{ review.comment }}
                             </p>
 
                         </div>
@@ -107,9 +167,19 @@
         {% endif %}
 
         {% if review_count == 0 %}
-            <p>No reviews yet.</p>
+            <p class="wedding-reviews-empty">
+                No reviews yet. Be the first to share your experience.
+            </p>
         {% endif %}
 
-        <a href="{% url 'weddings:review-create' wedding.pk %}" class="btn review-btn">Add Review</a>
+        <div class="wedding-review-action">
+            <a href="{% url 'weddings:review-create' wedding.pk %}">
+                WRITE A REVIEW →
+            </a>
+        </div>
+
     </div>
+
+</section>
+
 {% endblock %}

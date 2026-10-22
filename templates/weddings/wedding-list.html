@@ -1,28 +1,85 @@
 {% extends 'base.html' %}
 
-{% block title %}Wedding Packages{% endblock %}
+{% load humanize %}
+
+{% block title %}Wedding Packages | Dream Weddings{% endblock %}
 
 {% block content %}
-    <h1>Wedding Packages</h1>
+
+<!-- ===== WEDDING PACKAGES HEADER ===== -->
+<section class="weddings-header">
+    <span class="section-subtitle">CELEBRATE YOUR LOVE</span>
+    <h1>Our Wedding Packages</h1>
+    <p>
+        Every love story is unique. Explore our thoughtfully
+        curated wedding packages and find the perfect
+        beginning to your special day.
+    </p>
+</section>
+
+<!-- ===== WEDDING PACKAGES LIST ===== -->
+<section class="weddings-section">
+
     <div class="weddings-container">
 
         {% for wedding in weddings %}
-            <div class="wedding-card">
 
-                <img src="{{ wedding.image_url }}" alt="{{ wedding.name }}">
+            <article class="wedding-card">
 
-                <h3>{{ wedding.name }}</h3>
+                <div class="wedding-image">
+                    <img src="{{ wedding.image_url }}"
+                         alt="{{ wedding.name }}">
+                </div>
 
-                <p>{{ wedding.price }} BGN</p>
+                <div class="wedding-card-content">
 
-                <a href="{% url 'weddings:details' wedding.pk %}">
-                    View Details
-                </a>
+                    <span class="wedding-card-label">
+                        WEDDING COLLECTION
+                    </span>
 
+                    <h2>{{ wedding.name }}</h2>
+
+                    <p class="wedding-price">
+                        {{ wedding.price|floatformat:0|intcomma }} €
+                    </p>
+
+                    <a href="{% url 'weddings:details' wedding.pk %}"
+                       class="wedding-details-btn">
+                        VIEW DETAILS →
+                    </a>
+
+                </div>
+
+            </article>
+
+        {% empty %}
+
+            <div class="weddings-empty">
+                <h2>Beautiful Beginnings Are Coming Soon</h2>
+                <p>
+                    Our wedding collection is currently empty.
+                    Be the first to create a beautiful wedding package.
+                </p>
             </div>
+
         {% endfor %}
 
     </div>
 
-    <a href="{% url 'weddings:create'%}" class="btn create-btn">Create Wedding Package</a>
+    <!-- ===== CREATE WEDDING PACKAGE ===== -->
+    <div class="weddings-create">
+        <span class="section-subtitle">CREATE SOMETHING BEAUTIFUL</span>
+        <h2>Have a Wedding Vision in Mind?</h2>
+        <p>
+            Bring your ideas to life and create a wedding package
+            that reflects your unique vision.
+        </p>
+
+        <a href="{% url 'weddings:create' %}" class="wedding-create-btn">
+            CREATE WEDDING PACKAGE →
+        </a>
+    </div>
+
+</section>
+
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Wedding Packages{% endblock %}
+
+{% block content %}
+    <h1>Wedding Packages</h1>
+    <div class="weddings-container">
+
+        {% for wedding in weddings %}
+            <div class="wedding-card">
+
+                <img src="{{ wedding.image_url }}" alt="{{ wedding.name }}">
+
+                <h3>{{ wedding.name }}</h3>
+
+                <p>{{ wedding.price }} BGN</p>
+
+                <a href="{% url 'weddings:details' wedding.pk %}">
+                    View Details
+                </a>
+
+            </div>
+        {% endfor %}
+
+    </div>
+
+    <a href="{% url 'weddings:create'%}" class="btn create-btn">Create Wedding Package</a>
+{% endblock %}

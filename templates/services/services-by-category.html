@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ view.kwargs.category }} Services{% endblock %}
+
+{% block content %}
+
+<h1>{{ view.kwargs.category }}</h1>
+
+<div class="weddings-container">
+    {% for service in services %}
+        <div class="wedding-card">
+
+            <h3>{{ service.name }}</h3>
+
+            <a href="{% url 'services:details' service.pk %}">View Details</a>
+
+        </div>
+    {% empty %}
+        <p>No services available.</p>
+    {% endfor %}
+
+</div>
+<a href="{% url 'services:create' %}?category={{ view.kwargs.category }}"
+   class="btn create-btn">
+    Add Service
+</a>
+
+<a href="{% url 'services:list' %}">Back to Categories</a>
+
+{% endblock %}

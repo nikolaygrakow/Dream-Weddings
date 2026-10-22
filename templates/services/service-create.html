@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Service{% endblock %}
+
+{% block content %}
+
+    <h1>Create Service</h1>
+    <form method="POST" class="service-form">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn create-btn">
+            Create
+        </button>
+
+        <a href="{% url 'services:list' %}" class="btn cancel-btn">
+            Cancel
+        </a>
+    </form>
+
+{% endblock %}

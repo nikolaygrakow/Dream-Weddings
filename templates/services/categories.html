@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Categories{% endblock %}
+
+{% block content %}
+<h1>Our Services</h1>
+
+<div class="weddings-container">
+
+    <div class="wedding-card">
+        <a href="{% url 'services:category' 'Photography' %}">
+            <img src="{% static 'images/photography.jpg' %}" alt="Photography">
+
+            <h3>Photography</h3>
+        </a>
+    </div>
+
+    <div class="wedding-card">
+        <a href="{% url 'services:category' 'Videography' %}">
+            <img src="{% static 'images/video.jpg' %}" alt="Videography">
+
+            <h3>Videography</h3>
+        </a>
+    </div>
+
+    <div class="wedding-card">
+        <a href="{% url 'services:category' 'DJ' %}">
+            <img src="{% static 'images/dj.jpg' %}" alt="DJ">
+
+            <h3>DJ</h3>
+        </a>
+    </div>
+
+    <div class="wedding-card">
+        <a href="{% url 'services:category' 'Decoration' %}">
+            <img src="{% static 'images/decoration.jpg' %}" alt="Decoration">
+
+            <h3>Decoration</h3>
+        </a>
+    </div>
+
+</div>
+{% endblock %}

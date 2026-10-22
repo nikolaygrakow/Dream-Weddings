@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ service.name }} Details{% endblock %}
+
+{% block content %}
+    <h1>{{ service.name }}</h1>
+
+    <p><strong>Category:</strong> {{ service.category }}</p>
+
+    <p><strong>Phone:</strong> {{ service.phone }}</p>
+
+    <p>{{ service.description }}</p>
+
+    <div class="service-actions">
+        <a href="{% url 'services:edit' service.pk %}" class="btn edit-btn">Edit Service</a>
+        <a href="{% url 'services:list' %}" class="btn back-btn">Back to Services</a>
+        <a href="{% url 'services:delete' service.pk %}" class="btn delete-btn">Delete Service</a>
+    </div>
+
+{% endblock %}

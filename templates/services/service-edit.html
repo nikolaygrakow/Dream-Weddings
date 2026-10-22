@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Service{% endblock %}
+
+{% block content %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+        <a href="{% url 'services:details' service.pk %}" class="btn cancel-btn">
+            Cancel
+        </a>
+    </form>
+{% endblock %}

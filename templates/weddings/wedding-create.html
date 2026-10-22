@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Wedding{% endblock %}
+
+{% block content %}
+    <h1>Create Wedding</h1>
+    <form method="POST" class="wedding-form">
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" class="btn create-btn">
+            Create
+        </button>
+
+        <a href="{% url 'weddings:list' %}" class="btn cancel-btn">
+            Cancel
+        </a>
+    </form>
+{% endblock %}

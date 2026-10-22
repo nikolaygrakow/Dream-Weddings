@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ wedding.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ wedding.name }}</h1>
+
+        <img
+            src="{{ wedding.image_url }}"
+            alt="{{ wedding.name }}"
+            width="500"
+            >
+
+    <p>{{ wedding.description }}</p>
+
+    <p>Price: {{ wedding.price }}</p>
+
+    <p class="review-summary">
+        ⭐ {{ average_rating|floatformat:1 }}
+        ({{ review_count }} reviews)
+    </p>
+
+     <div class="service-actions">
+        <a href="{% url 'weddings:edit' wedding.pk %}" class="btn edit-btn">Edit Wedding</a>
+        <a href="{% url 'weddings:list' %}" class="btn back-btn">Back to Weddings</a>
+        <a href="{% url 'weddings:delete' wedding.pk %}" class="btn delete-btn">Delete Wedding</a>
+    </div>
+
+    <div>
+        <h3>Services</h3>
+
+        <ul>
+            {% for service in wedding.services.all %}
+                <li>{{ service.name }}</li>
+            {% empty %}
+                <li>No services selected.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div>
+        <h2>Reviews</h2>
+
+        {% with latest_review=reviews.0 %}
+            {% if latest_review %}
+                <div class="review">
+
+                    <p>{{ latest_review.author_name }}</p>
+
+                    <p class="rating">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= latest_review.rating %}
+                                ⭐
+                            {% else %}
+                                ☆
+                            {% endif %}
+                        {% endfor %}
+                    </p>
+
+                    <p>{{ latest_review.comment }}</p>
+
+                    <p>
+                        Posted on
+                        {{ latest_review.created_at|date:"d.m.Y H:i" }}
+                    </p>
+
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        {% if review_count > 1 %}
+
+            <details>
+                <summary>Show all reviews ▼</summary>
+
+                {% for review in reviews %}
+                    {% if not forloop.first %}
+
+                        <div class="review">
+
+                            <p>{{ review.author_name }}</p>
+
+                            <p class="rating">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        ⭐
+                                    {% else %}
+                                        ☆
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+
+                            <p>{{ review.comment }}</p>
+
+                            <p>
+                                Posted on
+                                {{ review.created_at|date:"d.m.Y H:i" }}
+                            </p>
+
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+
+            </details>
+
+        {% endif %}
+
+        {% if review_count == 0 %}
+            <p>No reviews yet.</p>
+        {% endif %}
+
+        <a href="{% url 'weddings:review-create' wedding.pk %}" class="btn review-btn">Add Review</a>
+    </div>
+{% endblock %}

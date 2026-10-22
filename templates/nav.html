@@ -1,0 +1,33 @@
+<nav class="navbar">
+    <div class="container">
+
+        <div class="logo">
+            <a href="{% url 'common:home' %}">
+                Dream Weddings
+            </a>
+        </div>
+
+        <ul class="nav-menu">
+            <li>
+                <a href="{% url 'common:home' %}">Home</a>
+            </li>
+
+            <li>
+                <a href="{% url 'weddings:list' %}">Weddings</a>
+            </li>
+
+            <li>
+                <a href="{% url 'services:list' %}">Services</a>
+            </li>
+
+            <li>
+                <a href="{% url 'common:about' %}">About</a>
+            </li>
+
+            <li>
+                <a href="{% url 'common:contact' %}">Contact</a>
+            </li>
+        </ul>
+
+    </div>
+</nav>

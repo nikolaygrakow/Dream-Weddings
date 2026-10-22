@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Dream Weddings{% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-subtitle">WELCOME TO DREAM WEDDINGS</span>
+
+            <h1>Your Dream Wedding,<br>Your Way</h1>
+
+            <p>
+                From intimate celebrations to extraordinary weddings,
+                we bring your vision to life.
+            </p>
+
+        </div>
+    </section>
+
+<!-- ===== WELCOME SECTION ===== -->
+    <section class="welcome-section">
+        <div class="welcome-content">
+            <span class="section-subtitle">A LITTLE ABOUT US</span>
+
+            <h2>Where Your Love Story Begins</h2>
+
+            <p>
+                Every love story deserves a beautiful celebration.
+                At Dream Weddings, we help you explore inspiring weddings,
+                discover trusted services, and bring your special day
+                closer to everything you've imagined.
+            </p>
+
+            <a href="{% url 'common:about' %}" class="welcome-link">
+                DISCOVER MORE <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </section>
+
+<!-- ===== SERVICES SECTION ===== -->
+    <section class="home-services">
+        <div class="services-heading">
+            <span class="section-subtitle">MAKING EVERY MOMENT SPECIAL</span>
+            <h2>Explore Our Services</h2>
+            <p>Discover the details that make your wedding unforgettable.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="{% static 'images/photography.jpg' %}" alt="Wedding photography">
+                <h3>Photography</h3>
+            </div>
+
+            <div class="service-card">
+                <img src="{% static 'images/decoration.jpg' %}" alt="Wedding decoration">
+                <h3>Decoration</h3>
+            </div>
+
+            <div class="service-card">
+                <img src="{% static 'images/dj.jpg' %}" alt="Wedding DJ">
+                <h3>DJ</h3>
+            </div>
+
+            <div class="service-card">
+                <img src="{% static 'images/video.jpg' %}" alt="Wedding videography">
+                <h3>Video</h3>
+            </div>
+        </div>
+
+        <a href="{% url 'services:list' %}" class="services-button">
+            VIEW ALL SERVICES →
+        </a>
+    </section>
+
+<!-- ===== HOME CALL TO ACTION ===== -->
+    <section class="home-cta">
+        <div class="home-cta-content">
+            <span class="section-subtitle">YOUR STORY STARTS HERE</span>
+
+            <h2>Let's Make Your Dream Wedding a Reality</h2>
+
+            <p>
+                Discover our wedding packages and find the perfect starting point for your unforgettable celebration.
+            </p>
+
+            <a href="{% url 'weddings:list' %}" class="home-cta-button">
+                EXPLORE WEDDING PACKAGES →
+            </a>
+        </div>
+    </section>
+
+{% endblock %}

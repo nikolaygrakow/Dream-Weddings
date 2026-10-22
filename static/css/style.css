@@ -1,0 +1,596 @@
+/* ===== HOME HERO ===== */
+
+.hero {
+    min-height: calc(100vh - 85px);
+    width: 100%;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(30, 27, 24, 0.48) 0%,
+            rgba(30, 27, 24, 0.16) 55%,
+            rgba(30, 27, 24, 0.04) 100%
+        ),
+        url("../images/home.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 900px;
+    margin-left: 14%;
+    padding: 60px 20px;
+    color: #fff;
+}
+
+.hero-subtitle {
+    font-size: 12px;
+    letter-spacing: 4px;
+    font-weight: 500;
+}
+
+.hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 5vw, 82px);
+    font-weight: 500;
+    line-height: 1.05;
+    margin: 22px 0;
+}
+
+.hero p {
+    font-size: 15px;
+    line-height: 1.9;
+    max-width: 480px;
+    margin-bottom: 35px;
+}
+
+.hero-button {
+    display: inline-block;
+    padding: 16px 34px;
+    background-color: #F7F3EC;
+    color: #3C342E;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: #D1BA98;
+    transform: translateY(-2px);
+}
+
+
+/* ===== GLOBAL ===== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #F7F3EC;
+    color: #3C342E;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* ===== NAVIGATION ===== */
+
+.navbar {
+    background-color: #F7F3EC;
+    padding: 22px 0;
+    border-bottom: 1px solid #E9DFD0;
+}
+
+.navbar .container {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 34px;
+    font-weight: 600;
+    color: #3C342E;
+    text-decoration: none;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu a {
+    color: #3C342E;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: #A48B70;
+}
+
+/* ===== HOME WELCOME SECTION ===== */
+
+.welcome-section {
+    background-color: #F7F3EC;
+    padding: 110px 20px;
+    text-align: center;
+}
+
+.welcome-content {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.section-subtitle {
+    display: block;
+    color: #A48B70;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+}
+
+.welcome-section h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 500;
+    color: #3C342E;
+    margin: 0 0 25px;
+}
+
+.welcome-section p {
+    font-size: 15px;
+    line-height: 2;
+    color: #756B62;
+    margin-bottom: 35px;
+}
+
+.welcome-link {
+    display: inline-block;
+    color: #3C342E;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #A48B70;
+    transition: color 0.3s ease;
+}
+
+.welcome-link:hover {
+    color: #A48B70;
+}
+
+/* ===== HOME SERVICES SECTION ===== */
+
+.home-services {
+    padding: 100px 8%;
+    background-color: #EFE8DE;
+    text-align: center;
+}
+
+.services-heading h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 500;
+    margin: 15px 0;
+}
+
+.services-heading p {
+    color: #756B62;
+    font-size: 14px;
+    margin-bottom: 50px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    max-width: 1100px;
+    margin: 0 auto 45px;
+}
+
+.service-card {
+    overflow: hidden;
+}
+
+.service-card img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover img {
+    transform: scale(1.04);
+}
+
+.service-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin: 18px 0 0;
+}
+
+.services-button {
+    display: inline-block;
+    padding: 15px 30px;
+    border: 1px solid #A48B70;
+    color: #3C342E;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.services-button:hover {
+    background-color: #A48B70;
+    color: white;
+}
+
+/* ===== HOME CALL TO ACTION ===== */
+
+.home-cta {
+    background-color: #F7F3EC;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.home-cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.home-cta h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 58px;
+    font-weight: 500;
+    line-height: 1.15;
+    margin: 20px 0 25px;
+    color: #3C342E;
+}
+
+.home-cta p {
+    font-size: 15px;
+    line-height: 2;
+    color: #756B62;
+    max-width: 600px;
+    margin: 0 auto 35px;
+}
+
+.home-cta-button {
+    display: inline-block;
+    padding: 17px 36px;
+    background-color: #3C342E;
+    color: #F7F3EC;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.home-cta-button:hover {
+    background-color: #A48B70;
+    transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+
+.footer {
+    background-color: #302A26;
+    color: #F7F3EC;
+    padding: 70px 8% 25px;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-brand h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-weight: 500;
+    margin: 0 0 15px;
+}
+
+.footer-brand p {
+    max-width: 320px;
+    color: #C9BFB4;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.footer-links h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 22px;
+}
+
+.footer-links a {
+    display: block;
+    width: fit-content;
+    color: #C9BFB4;
+    text-decoration: none;
+    font-size: 12px;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #FFFFFF;
+}
+
+.footer-bottom {
+    max-width: 1200px;
+    margin: 55px auto 0;
+    padding-top: 22px;
+    border-top: 1px solid #554B44;
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #AFA398;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+
+/* ===== ABOUT PAGE ===== */
+
+.about-section {
+    background-color: #F7F3EC;
+    padding: 100px 8% 120px;
+}
+
+.about-header {
+    max-width: 760px;
+    margin: 0 auto 75px;
+    text-align: center;
+}
+
+.about-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 68px;
+    font-weight: 500;
+    color: #3C342E;
+    margin: 15px 0 20px;
+}
+
+.about-header p {
+    font-size: 15px;
+    line-height: 2;
+    color: #756B62;
+}
+
+.about-content {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.about-card {
+    background-color: #EFE8DE;
+    padding: 45px 35px;
+    border-top: 2px solid #A48B70;
+}
+
+.about-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: #A48B70;
+}
+
+.about-card h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 500;
+    margin: 18px 0;
+    color: #3C342E;
+}
+
+.about-card p {
+    font-size: 13px;
+    line-height: 2;
+    color: #756B62;
+    margin: 0;
+}
+
+/* ===== CONTACT PAGE ===== */
+
+.contact-section {
+    background-color: #F7F3EC;
+    padding: 100px 8% 120px;
+}
+
+.contact-header {
+    max-width: 760px;
+    margin: 0 auto 70px;
+    text-align: center;
+}
+
+.contact-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 68px;
+    font-weight: 500;
+    margin: 15px 0 20px;
+}
+
+.contact-header p {
+    color: #756B62;
+    font-size: 15px;
+    line-height: 2;
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 35px;
+    align-items: start;
+}
+
+.contact-info,
+.contact-form {
+    background-color: #EFE8DE;
+    padding: 40px;
+    border-top: 2px solid #A48B70;
+}
+
+.contact-info h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 500;
+    margin: 0 0 25px;
+}
+
+.contact-info p {
+    color: #756B62;
+    font-size: 13px;
+    line-height: 2;
+}
+
+.coming-soon {
+    margin-bottom: 30px;
+}
+
+.coming-soon h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.coming-soon p {
+    color: #756B62;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.contact-form label {
+    display: block;
+    font-size: 12px;
+    margin: 18px 0 8px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #D8CCBD;
+    background-color: #F7F3EC;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    resize: vertical;
+}
+
+.contact-form button {
+    margin-top: 22px;
+    padding: 15px 30px;
+    background-color: #A48B70;
+    border: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* ===== 404 ERROR PAGE ===== */
+
+.error-section {
+    background-color: #F7F3EC;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.error-content {
+    max-width: 650px;
+}
+
+.error-content h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 150px;
+    font-weight: 500;
+    line-height: 1;
+    color: #A48B70;
+    margin: 20px 0 0;
+}
+
+.error-heart {
+    display: block;
+    width: 52px;
+    height: 52px;
+    color: #A48B70;
+    margin: 10px auto 20px;
+}
+
+.error-content h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 500;
+    color: #3C342E;
+    margin: 0 0 20px;
+}
+
+.error-content p {
+    color: #756B62;
+    font-size: 14px;
+    line-height: 2;
+    margin: 0 auto 35px;
+    max-width: 530px;
+}
+
+.error-button {
+    display: inline-block;
+    padding: 16px 34px;
+    background-color: #3C342E;
+    color: #F7F3EC;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    transition: 0.3s ease;
+}
+
+.error-button:hover {
+    background-color: #A48B70;
+    transform: translateY(-2px);
+}

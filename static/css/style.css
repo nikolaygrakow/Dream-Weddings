@@ -1457,3 +1457,15 @@ body {
     border-color: #302A26;
     color: #302A26;
 }
+
+/* ========================================
+   REVIEW CREATE PAGE
+======================================== */
+
+.review-form-container {
+    max-width: 680px;
+}
+
+.review-form-container .wedding-form textarea {
+    min-height: 160px;
+}

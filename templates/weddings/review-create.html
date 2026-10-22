@@ -1,23 +1,56 @@
 {% extends 'base.html' %}
 
-{% block title %}Create Review{% endblock %}
+{% block title %}Write a Review{% endblock %}
 
 {% block content %}
 
-    <h1>Create Review</h1>
+<section class="wedding-form-section">
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="wedding-form-header">
+        <span class="wedding-form-label">SHARE YOUR EXPERIENCE</span>
 
-        <button type="submit" class="btn create-btn">
-            Submit Review
-        </button>
+        <h1>Write a Review</h1>
 
-        <a href="{% url 'weddings:details' pk=view.kwargs.pk %}"
-           class="btn cancel-btn">
-            Cancel
-        </a>
-    </form>
+        <p>
+            Every love story deserves to be remembered.
+            Share your thoughts and help others discover
+            their perfect wedding celebration.
+        </p>
+    </div>
+
+    <div class="wedding-form-container review-form-container">
+
+        <div class="wedding-form-intro">
+            <span>LOVE NOTES & EXPERIENCES</span>
+
+            <h2>Your Words Matter</h2>
+
+            <p>
+                Tell us about your experience with this wedding package.
+            </p>
+        </div>
+
+        <form method="POST" class="wedding-form">
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <div class="wedding-form-actions">
+
+                <button type="submit" class="wedding-form-submit">
+                    SUBMIT REVIEW →
+                </button>
+
+                <a href="{% url 'weddings:details' pk=view.kwargs.pk %}"
+                   class="wedding-form-cancel">
+                    CANCEL
+                </a>
+
+            </div>
+        </form>
+
+    </div>
+
+</section>
 
 {% endblock %}

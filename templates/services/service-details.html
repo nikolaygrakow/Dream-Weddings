@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load service_filters %}
+
 {% block title %}{{ service.name }} Details{% endblock %}
 
 {% block content %}
@@ -38,9 +40,14 @@
 
             <div class="service-details-info-item">
                 <span>CONTACT PHONE</span>
-                <p>{{ service.phone }}</p>
+                <p>{{ service.phone|phone_display }}</p>
             </div>
-
+            {% if service.email %}
+                <div class="service-details-info-item">
+                    <span>CONTACT EMAIL</span>
+                    <p>{{ service.email }}</p>
+                </div>
+            {% endif %}
         </div>
 
         <!-- ===== ABOUT THE SERVICE ===== -->

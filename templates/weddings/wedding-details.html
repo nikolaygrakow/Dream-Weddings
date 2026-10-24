@@ -36,8 +36,14 @@
 
             <div class="wedding-detail-rating">
                 <span class="rating-star">★</span>
-                <strong>{{ average_rating|floatformat:1 }}</strong>
-                <span>({{ review_count }} reviews)</span>
+
+                {% if average_rating is not None %}
+                    <strong>{{ average_rating|floatformat:1 }}</strong>
+                {% else %}
+                    <strong>0.0</strong>
+                {% endif %}
+
+                <span>({{ review_count }} review{{ review_count|pluralize }})</span>
             </div>
 
             <div class="wedding-detail-services">

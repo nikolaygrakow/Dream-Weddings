@@ -1,6 +1,8 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
 
+from services.choices import ServiceCategoryChoices
 from services.forms import ServiceCreateForm, ServiceEditForm, ServiceDeleteForm
 from services.models import Service
 
@@ -28,6 +30,13 @@ class ServiceCreateView(CreateView):
     model = Service
     form_class = ServiceCreateForm
     template_name = 'services/service-create.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        category = self.request.GET.get('category')
+
+        if category not in ServiceCategoryChoices.values:
+            return redirect('services:list')
+        return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         form.instance.category = self.request.GET.get('category')

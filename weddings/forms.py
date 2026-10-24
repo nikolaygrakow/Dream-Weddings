@@ -25,11 +25,16 @@ class WeddingEditForm(WeddingBaseForm):
     )
 
 class WeddingDeleteForm(WeddingBaseForm):
+    class Meta(WeddingBaseForm.Meta):
+        fields = None
+        exclude = ['services', 'image_url']
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
         for field in self.fields.values():
             field.disabled = True
+
 
 
 class ReviewForm(forms.ModelForm):

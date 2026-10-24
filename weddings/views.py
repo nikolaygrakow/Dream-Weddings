@@ -1,4 +1,5 @@
 from django.db.models import Avg
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
@@ -10,7 +11,7 @@ class WeddingListView(ListView):
     model = Wedding
     template_name = 'weddings/wedding-list.html'
     context_object_name = 'weddings'
-
+    ordering = ['pk']
 
 class WeddingDetailsView(DetailView):
     model = Wedding
@@ -63,11 +64,12 @@ class ReviewCreateView(CreateView):
     form_class = ReviewForm
     template_name = 'weddings/review-create.html'
 
-    def form_valid(self, form):
-        form.instance.wedding = Wedding.objects.get(
-            pk=self.kwargs['pk']
-        )
+    def dispatch(self, request, *args, **kwargs):
+        self.wedding = get_object_or_404(Wedding, pk=self.kwargs['pk'])
+        return super().dispatch(request, *args, **kwargs)
 
+    def form_valid(self, form):
+        form.instance.wedding = self.wedding
         return super().form_valid(form)
 
     def get_success_url(self):

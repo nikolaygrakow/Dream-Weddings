@@ -7,6 +7,19 @@ class ServiceBaseForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = '__all__'
+        widgets = {
+            'phone': forms.TextInput(attrs={'placeholder': 'e.g. 0888123456'}),
+            'email': forms.EmailInput(attrs={'placeholder': 'e.g. email@example.com'}),
+        }
+
+        help_texts = {
+            'phone': 'Digits only, without spaces or +.',
+        }
+
+        labels = {
+            'phone': 'Contact Phone',
+        }
+
         error_messages = {
             'email': {
                 'unique': 'Service with this Email already exists.',
@@ -39,4 +52,4 @@ class ServiceDeleteForm(ServiceBaseForm):
 
         for field in self.fields.values():
             field.disabled = True
-
+            field.help_text = ''

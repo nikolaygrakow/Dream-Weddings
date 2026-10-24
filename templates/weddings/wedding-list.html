@@ -27,8 +27,11 @@
             <article class="wedding-card">
 
                 <div class="wedding-image">
-                    <img src="{{ wedding.image_url }}"
-                         alt="{{ wedding.name }}">
+                    {% if wedding.image %}
+                        <img src="{{ wedding.image.url }}" alt="{{ wedding.name }}">
+                    {% elif wedding.image_url %}
+                        <img src="{{ wedding.image_url }}" alt="{{ wedding.name }}">
+                    {% endif %}
                 </div>
 
                 <div class="wedding-card-content">

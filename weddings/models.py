@@ -19,8 +19,14 @@ class Wedding(models.Model):
     )
 
     description = models.TextField()
-
-    image_url = models.URLField()
+    image_url = models.URLField(
+        blank=True,
+    )
+    image = models.ImageField(
+        upload_to='wedding_images/',
+        blank=True,
+        null=True,
+    )
 
     services = models.ManyToManyField(
         'services.Service',

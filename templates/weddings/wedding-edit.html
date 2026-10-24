@@ -27,7 +27,7 @@
             <p>Update the information for your wedding package.</p>
         </div>
 
-        <form method="POST" class="wedding-form">
+        <form method="POST" enctype="multipart/form-data" class="wedding-form">
             {% csrf_token %}
 
             {{ form.as_p }}

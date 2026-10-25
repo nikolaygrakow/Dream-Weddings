@@ -146,6 +146,7 @@ The application is organized into three Django apps:
 - **Service Filtering:** Allow users to filter available services by category for easier navigation and selection.
 - **User Authentication:** Introduce user accounts and permissions for managing wedding packages and submitting reviews.
 - **Sample Data:** Provide optional demo data to help new users explore the application immediately after installation.
+- **Success Notifications:** Display confirmation messages after successfully creating, editing, or deleting wedding packages and services.
 
 ## 👨‍💻 Author
 

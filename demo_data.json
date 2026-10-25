@@ -1,182 +1,182 @@
 [
-  {
-    "model": "services.service",
-    "pk": 1,
-    "fields": {
-      "name": "Golden Hour Photography",
-      "category": "Photography",
-      "phone": "0888000101",
-      "description": "Capturing genuine emotions and beautiful moments that tell the story of your special day.",
-      "email": "goldenhour@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 2,
-    "fields": {
-      "name": "Grakov Photography",
-      "category": "Photography",
-      "phone": "0888000102",
-      "description": "Natural and elegant wedding photography, focused on the little details that matter most",
-      "email": "grakovphotography@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 3,
-    "fields": {
-      "name": "Bloom & Grace Decor",
-      "category": "Decoration",
-      "phone": "0888000103",
-      "description": "Elegant floral arrangements and thoughtful decorations tailored to your wedding style.",
-      "email": "bloomgrace@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 4,
-    "fields": {
-      "name": "Natalia Wedding Decor",
-      "category": "Decoration",
-      "phone": "0888000104",
-      "description": "Creating luxurious wedding settings with exquisite floral arrangements, elegant details, and timeless sophistication.",
-      "email": "nataliadecor@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 5,
-    "fields": {
-      "name": "DJ Ni4ko Exclusive",
-      "category": "DJ",
-      "phone": "0888000105",
-      "description": "Turning every wedding into an unforgettable celebration with electrifying music, spectacular energy, and a dance floor that stays alive all night long.",
-      "email": "djni4ko@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 6,
-    "fields": {
-      "name": "Royal Sound",
-      "category": "DJ",
-      "phone": "0888000106",
-      "description": "Bringing great music and positive energy to keep your guests dancing all night.",
-      "email": "royalsound@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 7,
-    "fields": {
-      "name": "Forever Films",
-      "category": "Videography",
-      "phone": "0888000107",
-      "description": "Preserving your wedding memories through natural, emotional, and beautifully crafted films.",
-      "email": "foreverfilms@mail.com"
-    }
-  },
-  {
-    "model": "services.service",
-    "pk": 8,
-    "fields": {
-      "name": "Love Story Cinema",
-      "category": "Videography",
-      "phone": "0888000108",
-      "description": "Capturing the highlights and heartfelt moments of your wedding day in a cinematic style.",
-      "email": "lsc@mail.com"
-    }
-  },
-  {
-    "model": "weddings.wedding",
-    "pk": 1,
-    "fields": {
-      "name": "Essential Wedding Package",
-      "price": "4500.00",
-      "description": "An intimate and elegant wedding package designed for couples who appreciate simplicity, beautiful details, and unforgettable moments.",
-      "image_url": "",
-      "image": "wedding_images/Сватбен_олтар_край_морето_при_залез.png",
-      "services": [
-        1,
-        6
-      ]
-    }
-  },
-  {
-    "model": "weddings.wedding",
-    "pk": 2,
-    "fields": {
-      "name": "Signature Wedding Package",
-      "price": "7999.00",
-      "description": "An elegant and thoughtfully designed wedding package that brings your dream celebration to life with beautiful decorations, professional photography, and unforgettable entertainment. Perfect for couples seeking a romantic atmosphere and lasting memories.",
-      "image_url": "",
-      "image": "wedding_images/simply-thrilled-65mh04qlcBU-unsplash.jpg",
-      "services": [
-        1,
-        3,
-        6
-      ]
-    }
-  },
-  {
-    "model": "weddings.wedding",
-    "pk": 3,
-    "fields": {
-      "name": "Luxury Wedding Package",
-      "price": "12900.00",
-      "description": "An exclusive wedding package designed for couples who dream of a truly extraordinary celebration. Featuring breathtaking decorations, premium photography, cinematic videography, and exceptional entertainment, every detail is carefully crafted to create a luxurious atmosphere and unforgettable memories.",
-      "image_url": "https://uveventsdxb.com/wp-content/uploads/2026/06/outdoor-Wedding-Dubai-uae-by-uv-events-1024x683.webp",
-      "image": "",
-      "services": [
-        2,
-        4,
-        5,
-        7
-      ]
-    }
-  },
-  {
-    "model": "weddings.review",
-    "pk": 1,
-    "fields": {
-      "author_name": "Emma Johnson",
-      "rating": 5,
-      "comment": "Our wedding day was absolutely beautiful! The photographer captured every special moment, and the music created such a wonderful atmosphere. Everything felt romantic and unforgettable.",
-      "created_at": "2026-10-25T13:43:40.536Z",
-      "wedding": 1
-    }
-  },
-  {
-    "model": "weddings.review",
-    "pk": 2,
-    "fields": {
-      "author_name": "Sophie Williams",
-      "rating": 2,
-      "comment": "A wonderful experience from start to finish! The DJ kept our guests entertained throughout the evening, and we received so many beautiful photos. We only wished the photography session had lasted a little longer.",
-      "created_at": "2026-10-25T13:44:09.062Z",
-      "wedding": 1
-    }
-  },
-  {
-    "model": "weddings.review",
-    "pk": 3,
-    "fields": {
-      "author_name": "Olivia Brown",
-      "rating": 5,
-      "comment": "The perfect package for our intimate wedding! The photography was stunning, and the DJ kept everyone dancing all night. Simple, elegant, and full of unforgettable memories. Highly recommended!",
-      "created_at": "2026-10-25T13:44:52.670Z",
-      "wedding": 1
-    }
-  },
-  {
-    "model": "weddings.review",
-    "pk": 4,
-    "fields": {
-      "author_name": "Isabella Anderson",
-      "rating": 5,
-      "comment": "An absolutely magical experience! Every detail was beyond our expectations, from the breathtaking floral decorations to the stunning photography and cinematic wedding video. The DJ created an incredible atmosphere, and our guests are still talking about our special day. Truly a once-in-a-lifetime celebration!",
-      "created_at": "2026-10-25T13:46:17.964Z",
-      "wedding": 3
-    }
+{
+  "model": "services.service",
+  "pk": 1,
+  "fields": {
+    "name": "Golden Hour Photography",
+    "category": "Photography",
+    "phone": "0888000101",
+    "description": "Capturing genuine emotions and beautiful moments that tell the story of your special day.",
+    "email": "goldenhour@mail.com"
   }
+},
+{
+  "model": "services.service",
+  "pk": 2,
+  "fields": {
+    "name": "Grakov Photography",
+    "category": "Photography",
+    "phone": "0888000102",
+    "description": "Natural and elegant wedding photography, focused on the little details that matter most",
+    "email": "grakovphotography@mail.com"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 3,
+  "fields": {
+    "name": "Bloom & Grace Decor",
+    "category": "Decoration",
+    "phone": "0888000103",
+    "description": "Elegant floral arrangements and thoughtful decorations tailored to your wedding style.",
+    "email": "bloomgrace@mail.com"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 4,
+  "fields": {
+    "name": "Natalia Wedding Decor",
+    "category": "Decoration",
+    "phone": "0888000104",
+    "description": "Creating luxurious wedding settings with exquisite floral arrangements, elegant details, and timeless sophistication.",
+    "email": "nataliadecor@mail.com"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 5,
+  "fields": {
+    "name": "DJ Ni4ko Exclusive",
+    "category": "DJ",
+    "phone": "0888000105",
+    "description": "Turning every wedding into an unforgettable celebration with electrifying music, spectacular energy, and a dance floor that stays alive all night long.",
+    "email": "djni4ko@mail.com"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 6,
+  "fields": {
+    "name": "Royal Sound",
+    "category": "DJ",
+    "phone": "0888000106",
+    "description": "Bringing great music and positive energy to keep your guests dancing all night.",
+    "email": "royalsound@mail.com"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 7,
+  "fields": {
+    "name": "Forever Films",
+    "category": "Videography",
+    "phone": "0888000107",
+    "description": "Preserving your wedding memories through natural, emotional, and beautifully crafted films.",
+    "email": "foreverfilms@mail.com"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 8,
+  "fields": {
+    "name": "Love Story Cinema",
+    "category": "Videography",
+    "phone": "0888000108",
+    "description": "Capturing the highlights and heartfelt moments of your wedding day in a cinematic style.",
+    "email": "lsc@mail.com"
+  }
+},
+{
+  "model": "weddings.wedding",
+  "pk": 1,
+  "fields": {
+    "name": "Essential Wedding Package",
+    "price": "4500.00",
+    "description": "An intimate and elegant wedding package designed for couples who appreciate simplicity, beautiful details, and unforgettable moments.",
+    "image_url": "",
+    "image": "wedding_images/essential_wedding_Z5dFbhz.png",
+    "services": [
+      1,
+      6
+    ]
+  }
+},
+{
+  "model": "weddings.wedding",
+  "pk": 2,
+  "fields": {
+    "name": "Signature Wedding Package",
+    "price": "7999.00",
+    "description": "An elegant and thoughtfully designed wedding package that brings your dream celebration to life with beautiful decorations, professional photography, and unforgettable entertainment. Perfect for couples seeking a romantic atmosphere and lasting memories.",
+    "image_url": "",
+    "image": "wedding_images/simply-thrilled-65mh04qlcBU-unsplash.jpg",
+    "services": [
+      1,
+      3,
+      6
+    ]
+  }
+},
+{
+  "model": "weddings.wedding",
+  "pk": 3,
+  "fields": {
+    "name": "Luxury Wedding Package",
+    "price": "12900.00",
+    "description": "An exclusive wedding package designed for couples who dream of a truly extraordinary celebration. Featuring breathtaking decorations, premium photography, cinematic videography, and exceptional entertainment, every detail is carefully crafted to create a luxurious atmosphere and unforgettable memories.",
+    "image_url": "https://uveventsdxb.com/wp-content/uploads/2026/06/outdoor-Wedding-Dubai-uae-by-uv-events-1024x683.webp",
+    "image": "",
+    "services": [
+      2,
+      4,
+      5,
+      7
+    ]
+  }
+},
+{
+  "model": "weddings.review",
+  "pk": 1,
+  "fields": {
+    "author_name": "Emma Johnson",
+    "rating": 5,
+    "comment": "Our wedding day was absolutely beautiful! The photographer captured every special moment, and the music created such a wonderful atmosphere. Everything felt romantic and unforgettable.",
+    "created_at": "2026-10-25T13:43:40.536Z",
+    "wedding": 1
+  }
+},
+{
+  "model": "weddings.review",
+  "pk": 2,
+  "fields": {
+    "author_name": "Sophie Williams",
+    "rating": 2,
+    "comment": "A wonderful experience from start to finish! The DJ kept our guests entertained throughout the evening, and we received so many beautiful photos. We only wished the photography session had lasted a little longer.",
+    "created_at": "2026-10-25T13:44:09.062Z",
+    "wedding": 1
+  }
+},
+{
+  "model": "weddings.review",
+  "pk": 3,
+  "fields": {
+    "author_name": "Olivia Brown",
+    "rating": 5,
+    "comment": "The perfect package for our intimate wedding! The photography was stunning, and the DJ kept everyone dancing all night. Simple, elegant, and full of unforgettable memories. Highly recommended!",
+    "created_at": "2026-10-25T13:44:52.670Z",
+    "wedding": 1
+  }
+},
+{
+  "model": "weddings.review",
+  "pk": 4,
+  "fields": {
+    "author_name": "Isabella Anderson",
+    "rating": 5,
+    "comment": "An absolutely magical experience! Every detail was beyond our expectations, from the breathtaking floral decorations to the stunning photography and cinematic wedding video. The DJ created an incredible atmosphere, and our guests are still talking about our special day. Truly a once-in-a-lifetime celebration!",
+    "created_at": "2026-10-25T13:46:17.964Z",
+    "wedding": 3
+  }
+}
 ]

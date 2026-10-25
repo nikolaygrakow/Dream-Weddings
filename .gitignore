@@ -13,4 +13,8 @@ __pycache__/
 .env
 
 # Uploaded images
-media/
+media/*
+!media/wedding_images/
+media/wedding_images/*
+!media/wedding_images/Сватбен_олтар_край_морето_при_залез.png
+!media/wedding_images/simply-thrilled-65mh04qlcBU-unsplash.jpg

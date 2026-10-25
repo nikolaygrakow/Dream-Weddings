@@ -130,6 +130,7 @@ Dream-Weddings/
 │   └── css/
 ├── media/                 # Uploaded images (local)
 ├── manage.py
+├── demo_data.json
 ├── requirements.txt
 └── README.md
 ```
@@ -140,12 +141,25 @@ The application is organized into three Django apps:
 - **services** — wedding service management.
 - **weddings** — wedding packages and customer reviews.
 
+
+## 📦 Demo Data
+
+The project includes a `demo_data.json` fixture with 3 wedding packages, 8 services, and 4 sample reviews.
+
+To load the sample data after applying migrations, run:
+
+```bash
+python manage.py loaddata demo_data.json
+```
+
+Two wedding images are included in `media/wedding_images/`, while the third uses an external URL.
+
+
 ## 🔮 Future Improvements
 
 - **Categorized Service Selection:** Enhance the existing checkbox interface by grouping wedding services into clearly labeled categories (Photography, Videography, DJ, and Decoration), with a scrollable layout for larger service catalogs.
 - **Service Filtering:** Allow users to filter available services by category for easier navigation and selection.
 - **User Authentication:** Introduce user accounts and permissions for managing wedding packages and submitting reviews.
-- **Sample Data:** Provide optional demo data to help new users explore the application immediately after installation.
 - **Success Notifications:** Display confirmation messages after successfully creating, editing, or deleting wedding packages and services.
 
 ## 👨‍💻 Author

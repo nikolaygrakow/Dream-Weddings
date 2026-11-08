@@ -37,8 +37,8 @@ PROJECT_APPS = [
     'common',
     'weddings',
     'services',
+    'accounts',
 ]
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -49,6 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 ] + PROJECT_APPS
+
+AUTH_USER_MODEL = 'accounts.WeddingUser'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

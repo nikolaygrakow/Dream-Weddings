@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -21,7 +22,7 @@ class WeddingDetailsView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        reviews = self.object.reviews.all().order_by('-created_at')
+        reviews = self.object.reviews.select_related('author').order_by('-created_at')
 
         context['reviews'] = reviews
         context['review_count'] = reviews.count()
@@ -59,7 +60,7 @@ class WeddingDeleteView(DeleteView):
         context['form'] = WeddingDeleteForm(instance=self.object)
         return context
 
-class ReviewCreateView(CreateView):
+class ReviewCreateView(LoginRequiredMixin, CreateView):
     model = Review
     form_class = ReviewForm
     template_name = 'weddings/review-create.html'
@@ -69,6 +70,7 @@ class ReviewCreateView(CreateView):
         return super().dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        form.instance.author = self.request.user
         form.instance.wedding = self.wedding
         return super().form_valid(form)
 

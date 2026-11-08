@@ -52,4 +52,4 @@ class WeddingDeleteForm(WeddingBaseForm):
 class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
-        fields = ['author_name', 'rating', 'comment']
+        fields = ['rating', 'comment']

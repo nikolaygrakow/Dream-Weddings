@@ -1,4 +1,5 @@
 from decimal import Decimal
+from django.conf import settings
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
@@ -39,8 +40,11 @@ class Wedding(models.Model):
 
 
 class Review(models.Model):
-    author_name = models.CharField(
-        max_length=50,
+
+    author = models.ForeignKey(
+        to=settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='reviews',
     )
 
     rating = models.PositiveIntegerField(
@@ -63,7 +67,7 @@ class Review(models.Model):
     )
 
     def __str__(self):
-        return f'{self.author_name} - {self.rating}/5'
+        return f'{self.author.email} - {self.rating}/5'
 
     @property
     def stars(self):

@@ -27,7 +27,7 @@ class WeddingAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    list_display = ['id', 'author_name', 'rating', 'wedding', 'created_at']
-    search_fields = ['author_name', 'wedding__name']
+    list_display = ['id', 'author', 'rating', 'wedding', 'created_at']
+    search_fields = ['author__email', 'wedding__name']
     list_filter = ['rating', 'created_at']
     ordering = ['-created_at']

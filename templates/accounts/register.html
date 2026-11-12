@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Registration {% endblock %}
+
+{% block content %}
+<section class="account-section">
+    <div class="account-container">
+        <div class="account-header">
+            <h1>Create Your Account</h1>
+            <p>Begin your journey towards your dream wedding.</p>
+        </div>
+
+        <form method="post" class="account-form" novalidate>
+            {% csrf_token %}
+
+            {{ form.as_p }}
+
+            <button type="submit" class="account-submit">
+                Create Account
+            </button>
+        </form>
+
+        <div class="account-footer">
+            <p>
+                Already have an account?
+                <a href="{% url 'accounts:login' %}">Sign In</a>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

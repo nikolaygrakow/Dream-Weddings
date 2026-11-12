@@ -50,7 +50,12 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 ] + PROJECT_APPS
 
+# Authentication
 AUTH_USER_MODEL = 'accounts.WeddingUser'
+
+LOGIN_URL = 'accounts:login'
+LOGIN_REDIRECT_URL = 'common:home'
+LOGOUT_REDIRECT_URL = 'common:home'
 
 
 MIDDLEWARE = [

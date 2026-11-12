@@ -129,6 +129,51 @@ body {
     color: #A48B70;
 }
 
+/* ===== NAVIGATION AUTH ===== */
+
+.nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 28px;
+    border-left: 1px solid #D8CCBD;
+}
+
+.nav-menu .nav-register {
+    padding: 12px 18px;
+    background-color: #A48B70;
+    color: #FFFFFF;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.nav-menu .nav-register:hover {
+    background-color: #3C342E;
+    color: #FFFFFF;
+}
+
+.nav-auth form {
+    margin: 0;
+}
+
+.nav-logout {
+    padding: 0;
+    border: none;
+    background: none;
+    color: #3C342E;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.nav-logout:hover {
+    color: #A48B70;
+}
+
 /* ===== HOME WELCOME SECTION ===== */
 
 .welcome-section {
@@ -2143,4 +2188,214 @@ body {
     .wedding-form #id_services {
         grid-template-columns: 1fr;
     }
+}
+
+/* ===== ACCOUNT REGISTRATION ===== */
+
+.account-section {
+    background-color: #F7F3EC;
+    padding: 80px 20px 110px;
+}
+
+.account-container {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 45px 50px;
+    background-color: #FFFFFF;
+    border: 1px solid #E9DFD0;
+}
+
+.account-header {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.account-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 500;
+    color: #3C342E;
+    margin: 0 0 12px;
+}
+
+.account-header p {
+    font-size: 13px;
+    line-height: 1.8;
+    color: #756B62;
+    margin: 0;
+}
+
+.account-form p {
+    margin: 0 0 22px;
+}
+
+.account-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #3C342E;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.account-form input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #D8CCBD;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    color: #3C342E;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    transition: border-color 0.3s ease;
+}
+
+.account-form input:focus {
+    outline: none;
+    border-color: #A48B70;
+}
+
+.account-form .helptext {
+    display: block;
+    margin-top: 7px;
+    color: #9A9086;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.account-form > ul {
+    list-style: none;
+    padding: 0;
+    margin: -10px 0 20px;
+    color: #9A9086;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.account-form > ul li {
+    margin-bottom: 3px;
+}
+
+.account-form .errorlist {
+    padding-left: 18px;
+    margin: 8px 0;
+    color: #A14D4D;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.account-submit {
+    width: 100%;
+    padding: 16px 20px;
+    margin-top: 12px;
+    border: none;
+    background-color: #3C342E;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.account-submit:hover {
+    background-color: #A48B70;
+}
+
+.account-footer {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.account-footer p {
+    font-size: 12px;
+    color: #756B62;
+}
+
+.account-footer a {
+    color: #A48B70;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.account-footer a:hover {
+    color: #3C342E;
+}
+
+@media (max-width: 600px) {
+    .account-section {
+        padding: 45px 15px 70px;
+    }
+
+    .account-container {
+        padding: 35px 25px;
+    }
+
+    .account-header h1 {
+        font-size: 38px;
+    }
+}
+
+.account-form label:has(+ input[required])::after {
+    content: " *";
+    color: #C65A5A;
+    font-weight: 600;
+}
+
+.account-section.login-page .account-form label::after {
+    content: none;
+}
+
+/* Django Messages */
+
+.messages-container {
+    max-width: 520px;
+    margin: 24px auto 0;
+    padding: 0 20px;
+}
+
+.message {
+    padding: 15px 22px;
+    border: 1px solid #E9DFD0;
+    background-color: #FFFFFF;
+    color: #3C342E;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    text-align: center;
+    font-weight: 500;
+
+}
+
+.message-success {
+    background-color: #F1F6EF;
+    border-color: #C9D9C5;
+    color: #4E7051;
+}
+
+.message-error {
+    background-color: #FAF0EF;
+    border-color: #E7C5C1;
+    color: #A14D4D;
+}
+
+.message + .message {
+    margin-top: 10px;
+}
+
+.message-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    vertical-align: middle;
 }

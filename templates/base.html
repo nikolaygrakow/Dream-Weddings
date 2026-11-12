@@ -21,6 +21,19 @@
         {% include 'nav.html' %}
     {% endblock %}
 
+    {% if messages %}
+        <div class="messages-container">
+            {% for message in messages %}
+                <div class="message message-{{ message.tags }}">
+                    {% if 'success' in message.tags %}
+                        <span class="message-icon" aria-hidden="true">✓</span>
+                    {% endif %}
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
     <main class="content">
         {% block content %}
         {% endblock %}

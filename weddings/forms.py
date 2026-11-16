@@ -11,6 +11,14 @@ class WeddingBaseForm(forms.ModelForm):
             'image_url': 'Paste an image URL or upload an image below.',
             'image': 'Upload an image or provide an image URL above.',
         }
+        error_messages = {
+            'name': {
+                'required': 'Please enter a wedding name.',
+            },
+            'description': {
+                'required': 'Please provide a wedding description.',
+            },
+        }
 
 class WeddingImageValidationForm(WeddingBaseForm):
     def clean(self):
@@ -53,3 +61,11 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ['rating', 'comment']
+        error_messages = {
+            'comment': {
+                'required': 'Please write your review.',
+            },
+            'rating': {
+                'required': 'Please select a rating from 1 to 5 stars.',
+            },
+        }

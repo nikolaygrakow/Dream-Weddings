@@ -30,10 +30,25 @@
             </p>
         </div>
 
-        <form method="POST" class="wedding-form">
+        <form method="POST" class="wedding-form" novalidate>
             {% csrf_token %}
 
-            {{ form.as_p }}
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors }}
+            {% endif %}
+
+            {% for field in form %}
+                <p>
+                    {{ field.label_tag }}
+                    {{ field }}
+
+                    {% if field.help_text %}
+                        <span class="helptext">{{ field.help_text }}</span>
+                    {% endif %}
+
+                    {{ field.errors }}
+                </p>
+            {% endfor %}
 
             <div class="wedding-form-actions">
 

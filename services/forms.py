@@ -22,8 +22,17 @@ class ServiceBaseForm(forms.ModelForm):
 
         error_messages = {
             'email': {
-                'unique': 'Service with this Email already exists.',
-            }
+                'unique': 'Service with this email already exists.',
+            },
+            'name': {
+                'required': 'Please enter a service name.',
+            },
+            'description': {
+                'required': 'Please provide a service description.',
+            },
+            'phone': {
+                'required': 'Please enter a contact phone number.',
+            },
         }
 
     def clean_phone(self):

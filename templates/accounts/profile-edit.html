@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section class="profile-section">
+    <div class="profile-container">
+
+        <div class="profile-header">
+            <span class="profile-eyebrow">YOUR PERSONAL SPACE</span>
+            <h1>Edit Profile</h1>
+            <p>Update your personal information below.</p>
+        </div>
+
+        <div class="profile-card">
+            <div class="profile-card-body">
+                <h3>Personal Information</h3>
+
+                <form method="post" class="profile-edit-form" novalidate>
+                    {% csrf_token %}
+
+                    {% if form.non_field_errors %}
+                        {{ form.non_field_errors }}
+                    {% endif %}
+
+                    {% for field in form %}
+                        <div class="profile-form-group">
+                            {{ field.label_tag }}
+                            {{ field }}
+
+                            {% if field.help_text %}
+                                <span class="helptext">{{ field.help_text }}</span>
+                            {% endif %}
+
+                            {{ field.errors }}
+                        </div>
+                    {% endfor %}
+
+                    <div class="profile-edit-actions">
+                        <a href="{% url 'accounts:profile-details' %}"
+                           class="profile-cancel-button">
+                            Cancel
+                        </a>
+
+                        <button type="submit" class="profile-save-button">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% endblock %}

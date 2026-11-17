@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
 
@@ -13,6 +14,11 @@ class RegisterView(SuccessMessageMixin, CreateView):
     form_class = WeddingUserCreationForm
     success_url = reverse_lazy('accounts:login')
     success_message = "Your account has been created successfully!"
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect('accounts:profile-details')
+        return super().dispatch(request, *args, **kwargs)
 
 class WeddingLoginView(LoginView):
     template_name = 'accounts/login.html'

@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -32,17 +32,19 @@ class WeddingDetailsView(DetailView):
 
         return context
 
-class WeddingCreateView(CreateView):
+class WeddingCreateView(PermissionRequiredMixin, CreateView):
     model = Wedding
     form_class = WeddingCreateForm
     template_name = 'weddings/wedding-create.html'
     success_url = reverse_lazy('weddings:list')
+    permission_required = 'weddings.add_wedding'
 
 
-class WeddingEditView(UpdateView):
+class WeddingEditView(PermissionRequiredMixin, UpdateView):
     model = Wedding
     form_class = WeddingEditForm
     template_name = 'weddings/wedding-edit.html'
+    permission_required = 'weddings.change_wedding'
 
     def get_success_url(self):
         return reverse_lazy(
@@ -50,10 +52,11 @@ class WeddingEditView(UpdateView):
             kwargs={'pk': self.object.pk}
         )
 
-class WeddingDeleteView(DeleteView):
+class WeddingDeleteView(PermissionRequiredMixin, DeleteView):
     model = Wedding
     template_name = 'weddings/wedding-delete.html'
     success_url = reverse_lazy('weddings:list')
+    permission_required = 'weddings.delete_wedding'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

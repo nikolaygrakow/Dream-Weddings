@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, TemplateView
@@ -26,10 +27,11 @@ class ServiceDetailsView(DetailView):
     context_object_name = 'service'
 
 
-class ServiceCreateView(CreateView):
+class ServiceCreateView(PermissionRequiredMixin, CreateView):
     model = Service
     form_class = ServiceCreateForm
     template_name = 'services/service-create.html'
+    permission_required = 'services.add_service'
 
     def dispatch(self, request, *args, **kwargs):
         category = self.request.GET.get('category')
@@ -48,10 +50,11 @@ class ServiceCreateView(CreateView):
             kwargs={'category': self.object.category}
         )
 
-class ServiceEditView(UpdateView):
+class ServiceEditView(PermissionRequiredMixin, UpdateView):
     model = Service
     form_class = ServiceEditForm
     template_name = 'services/service-edit.html'
+    permission_required = 'services.change_service'
 
     def get_success_url(self):
         return reverse_lazy(
@@ -59,9 +62,10 @@ class ServiceEditView(UpdateView):
             kwargs={'pk': self.object.pk}
         )
 
-class ServiceDeleteView(DeleteView):
+class ServiceDeleteView(PermissionRequiredMixin, DeleteView):
     model = Service
     template_name = 'services/service-delete.html'
+    permission_required = 'services.delete_service'
 
     def get_success_url(self):
         return reverse_lazy(

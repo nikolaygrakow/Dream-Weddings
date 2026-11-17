@@ -66,15 +66,21 @@
                 </div>
             </div>
 
-            <div class="wedding-detail-actions">
-                <a href="{% url 'weddings:edit' wedding.pk %}" class="wedding-edit-btn">
-                    EDIT PACKAGE
-                </a>
+            {% if perms.weddings.change_wedding or perms.weddings.delete_wedding %}
+                <div class="wedding-detail-actions">
+                    {% if perms.weddings.change_wedding %}
+                        <a href="{% url 'weddings:edit' wedding.pk %}" class="wedding-edit-btn">
+                            EDIT PACKAGE
+                        </a>
+                    {% endif %}
 
-                <a href="{% url 'weddings:delete' wedding.pk %}" class="wedding-delete-btn">
-                    DELETE PACKAGE
-                </a>
-            </div>
+                    {% if perms.weddings.delete_wedding %}
+                        <a href="{% url 'weddings:delete' wedding.pk %}" class="wedding-delete-btn">
+                            DELETE PACKAGE
+                        </a>
+                    {% endif %}
+                </div>
+            {% endif %}
 
         </div>
 

@@ -63,10 +63,12 @@
     <!-- ===== PAGE ACTIONS ===== -->
     <div class="services-category-actions">
 
-        <a href="{% url 'services:create' %}?category={{ view.kwargs.category }}"
-           class="services-category-add-btn">
-            + ADD NEW SERVICE
-        </a>
+        {% if perms.services.add_service %}
+            <a href="{% url 'services:create' %}?category={{ view.kwargs.category }}"
+               class="services-category-add-btn">
+                + ADD NEW SERVICE
+            </a>
+        {% endif %}
 
         <a href="{% url 'services:list' %}"
            class="services-category-back-btn">

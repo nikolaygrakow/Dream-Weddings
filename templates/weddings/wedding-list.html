@@ -70,19 +70,20 @@
     </div>
 
     <!-- ===== CREATE WEDDING PACKAGE ===== -->
-    <div class="weddings-create">
-        <span class="section-subtitle">CREATE SOMETHING BEAUTIFUL</span>
-        <h2>Have a Wedding Vision in Mind?</h2>
-        <p>
-            Bring your ideas to life and create a wedding package
-            that reflects your unique vision.
-        </p>
+    {% if perms.weddings.add_wedding %}
+        <div class="weddings-create">
+            <span class="section-subtitle">CREATE SOMETHING BEAUTIFUL</span>
+            <h2>Have a Wedding Vision in Mind?</h2>
+            <p>
+                Bring your ideas to life and create a wedding package
+                that reflects your unique vision.
+            </p>
 
-        <a href="{% url 'weddings:create' %}" class="wedding-create-btn">
-            CREATE WEDDING PACKAGE →
-        </a>
-    </div>
-
+            <a href="{% url 'weddings:create' %}" class="wedding-create-btn">
+                CREATE WEDDING PACKAGE →
+            </a>
+        </div>
+    {% endif %}
 </section>
 
 {% endblock %}

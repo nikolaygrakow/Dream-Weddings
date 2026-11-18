@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Review{% endblock %}
+
+{% block content %}
+
+    <section class="wedding-delete-section">
+
+        <div class="wedding-delete-container">
+
+        <span class="wedding-delete-label">
+            MANAGE YOUR REVIEWS
+        </span>
+
+            <div class="wedding-delete-icon">
+                !
+            </div>
+
+            <h1>Delete Your Review?</h1>
+
+            <p class="wedding-delete-description">
+                Are you sure you want to delete your review for
+                <strong>{{ object.wedding.name }}</strong>?
+            </p>
+
+            <div class="wedding-review-card">
+
+                <div class="wedding-review-stars">
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= object.rating %}
+                            ★
+                        {% else %}
+                            ☆
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                <p class="wedding-review-comment">
+                    {{ object.comment }}
+                </p>
+
+            </div>
+
+            <p class="wedding-delete-warning">
+                This action cannot be undone. Your review
+                and rating will be permanently removed.
+            </p>
+
+            <form method="POST" class="wedding-delete-form">
+                {% csrf_token %}
+
+                <div class="wedding-delete-actions">
+
+                    <button type="submit" class="wedding-confirm-delete">
+                        YES, DELETE REVIEW
+                    </button>
+
+                    <a href="{% url 'weddings:details' object.wedding.pk %}"
+                       class="wedding-cancel-delete">
+                        CANCEL
+                    </a>
+
+                </div>
+            </form>
+
+        </div>
+
+    </section>
+
+{% endblock %}

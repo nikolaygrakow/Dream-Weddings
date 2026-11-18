@@ -9,6 +9,10 @@ urlpatterns = [
         path('', views.WeddingDetailsView.as_view(), name='details'),
         path('edit/', views.WeddingEditView.as_view(), name='edit'),
         path('delete/', views.WeddingDeleteView.as_view(), name='delete'),
-        path('reviews/create/', views.ReviewCreateView.as_view(), name='review-create')
-    ]))
+        path('reviews/create/', views.ReviewCreateView.as_view(), name='review-create'),
+    ])),
+    path('reviews/<int:pk>/', include([
+        path('edit/', views.ReviewEditView.as_view(), name='review-edit'),
+        path('delete/', views.ReviewDeleteView.as_view(), name='review-delete'),
+    ])),
 ]

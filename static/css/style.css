@@ -1090,6 +1090,49 @@ body {
     overflow-wrap: anywhere;
 }
 
+
+.wedding-review-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.wedding-review-actions a {
+    display: inline-block;
+    padding: 11px 17px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.wedding-review-actions .review-edit-btn,
+.wedding-review-actions .review-edit-btn:visited {
+    color: #A48B70;
+    border: 1px solid #A48B70;
+}
+
+.wedding-review-actions .review-edit-btn:hover {
+    background-color: #A48B70;
+    color: #FFFFFF;
+}
+
+.wedding-review-actions .review-delete-btn,
+.wedding-review-actions .review-delete-btn:visited {
+    color: #A45C55;
+    border: 1px solid #A45C55;
+}
+
+.wedding-review-actions .review-delete-btn:hover {
+    background-color: #A45C55;
+    color: #FFFFFF;
+}
+
+
 .wedding-all-reviews {
     margin-top: 15px;
 }
@@ -1168,6 +1211,8 @@ body {
     padding: 14px 0;
     border-bottom: 1px solid #A48B70;
 }
+
+
 
 /* ========================================
    WEDDING CREATE PAGE

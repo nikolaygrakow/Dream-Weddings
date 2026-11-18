@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin, UserPassesTestMixin
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
@@ -76,6 +76,39 @@ class ReviewCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         form.instance.wedding = self.wedding
         return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'weddings:details',
+            kwargs={'pk': self.object.wedding.pk}
+        )
+
+class ReviewEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Review
+    form_class = ReviewForm
+    template_name = 'weddings/review-edit.html'
+
+    def test_func(self):
+        return (
+                self.request.user == self.get_object().author
+                or self.request.user.is_superuser
+        )
+
+    def get_success_url(self):
+        return reverse_lazy(
+            'weddings:details',
+            kwargs={'pk': self.object.wedding.pk}
+        )
+
+class ReviewDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Review
+    template_name = 'weddings/review-delete.html'
+
+    def test_func(self):
+        return (
+                self.request.user == self.get_object().author
+                or self.request.user.is_superuser
+        )
 
     def get_success_url(self):
         return reverse_lazy(

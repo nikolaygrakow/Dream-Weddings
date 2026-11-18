@@ -992,8 +992,9 @@ body {
 }
 
 .wedding-delete-btn:hover {
-    border-color: #9E665B;
-    color: #9E665B;
+    background-color: #A45C55;
+    border-color: #A45C55;
+    color: #FFFFFF;
 }
 
 .wedding-detail-back {

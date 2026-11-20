@@ -38,6 +38,7 @@ PROJECT_APPS = [
     'weddings',
     'services',
     'accounts',
+    'inquiries',
 ]
 
 INSTALLED_APPS = [

@@ -1,9 +1,13 @@
+{% load static %}
+
 <nav class="navbar">
     <div class="container">
 
         <div class="logo">
             <a href="{% url 'common:home' %}">
-                Dream Weddings
+                <img src="{% static 'images/branding/dream_weddings_logo.png' %}"
+                     alt="Dream Weddings Logo"
+                     class="navbar-logo">
             </a>
         </div>
 

@@ -1,4 +1,6 @@
 from django import forms
+
+from services.choices import ServiceCategoryChoices
 from services.models import Service
 from weddings.models import Wedding, Review
 
@@ -31,19 +33,27 @@ class WeddingImageValidationForm(WeddingBaseForm):
 
         return cleaned_data
 
-class WeddingCreateForm(WeddingImageValidationForm):
+class WeddingServicesForm(WeddingImageValidationForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.selected_services = [str(pk) for pk in self['services'].value() or []]
+        self.grouped_services = {}
+
+        for value, _ in ServiceCategoryChoices.choices:
+            self.grouped_services[value] = Service.objects.filter(category=value)
+
+
     services = forms.ModelMultipleChoiceField(
         queryset=Service.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False,
     )
 
-class WeddingEditForm(WeddingImageValidationForm):
-    services = forms.ModelMultipleChoiceField(
-        queryset=Service.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
-        required=False,
-    )
+class WeddingCreateForm(WeddingServicesForm):
+    pass
+
+class WeddingEditForm(WeddingServicesForm):
+    pass
 
 class WeddingDeleteForm(WeddingBaseForm):
     class Meta(WeddingBaseForm.Meta):

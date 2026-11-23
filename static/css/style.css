@@ -1385,6 +1385,146 @@ body {
     font-size: 11px;
 }
 
+/* ===== WEDDING SERVICES ACCORDION ===== */
+
+.wedding-services {
+    margin-top: 35px;
+}
+
+.wedding-services h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: #302A26;
+    margin: 0 0 8px;
+}
+
+.wedding-services > p {
+    font-size: 12px;
+    color: #82766B;
+    line-height: 1.8;
+    margin: 0 0 25px;
+}
+
+.service-category {
+    border: 1px solid #E4DBD0;
+    background-color: #FBF9F6;
+    margin-bottom: 12px;
+}
+
+.service-category summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #302A26;
+}
+
+.service-category summary::-webkit-details-marker {
+    display: none;
+}
+
+.service-category summary span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    color: #A48B70;
+    letter-spacing: 0.5px;
+}
+
+.service-category .service-category-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.service-category .service-category-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    font-size: 26px;
+    color: #655448;
+}
+
+.service-category .service-category-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #302A26;
+    letter-spacing: 0;
+}
+
+.service-category .service-category-count {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    font-weight: 400;
+    color: #51463E;
+    letter-spacing: 0;
+}
+
+.service-category summary::after {
+    content: "⌄";
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #A48B70;
+    margin-left: 15px;
+    transition: transform 0.3s ease;
+}
+
+.service-category[open] summary::after {
+    transform: rotate(180deg);
+}
+
+.service-category[open] {
+    border-color: #CDB99F;
+}
+
+.service-category[open] summary {
+    border-bottom: 1px solid #E4DBD0;
+}
+
+.service-category-options {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 30px 20px;
+}
+
+.wedding-form .service-category-options label {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 17px 12px;
+    margin: 0;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #E8E0D6;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    font-weight: 500;
+    letter-spacing: 0;
+    cursor: pointer;
+}
+
+.wedding-form .service-category-options input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
+    accent-color: #A48B70;
+}
+
+.wedding-form .service-category-options label:has(input:checked) {
+    background: transparent;
+    border-color: #E8E0D6;
+}
+
 /* FORM BUTTONS */
 
 .wedding-form-actions {

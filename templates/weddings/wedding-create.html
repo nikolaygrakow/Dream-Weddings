@@ -4,60 +4,103 @@
 
 {% block content %}
 
-<section class="wedding-form-section">
+    <section class="wedding-form-section">
 
-    <div class="wedding-form-header">
-        <span class="wedding-form-label">CREATE SOMETHING BEAUTIFUL</span>
+        <div class="wedding-form-header">
+            <span class="wedding-form-label">CREATE SOMETHING BEAUTIFUL</span>
 
-        <h1>Create Your Wedding Package</h1>
+            <h1>Create Your Wedding Package</h1>
 
-        <p>
-            Every unforgettable celebration begins with a vision.
-            Bring yours to life by creating a beautiful wedding package.
-        </p>
-    </div>
-
-    <div class="wedding-form-container">
-
-        <div class="wedding-form-intro">
-            <span>THE WEDDING COLLECTION</span>
-            <h2>Let's Begin Your Story</h2>
-            <p>Fill in the details below to create your wedding package.</p>
+            <p>
+                Every unforgettable celebration begins with a vision.
+                Bring yours to life by creating a beautiful wedding package.
+            </p>
         </div>
 
-        <form method="POST" enctype="multipart/form-data" class="wedding-form" novalidate>
-            {% csrf_token %}
+        <div class="wedding-form-container">
 
-            {% if form.non_field_errors %}
-                {{ form.non_field_errors }}
-            {% endif %}
-
-            {% for field in form %}
-                <p>
-                    {{ field.label_tag }}
-                    {{ field }}
-
-                    {% if field.help_text %}
-                        <span class="helptext">{{ field.help_text }}</span>
-                    {% endif %}
-
-                    {{ field.errors }}
-                </p>
-            {% endfor %}
-
-            <div class="wedding-form-actions">
-                <button type="submit" class="wedding-form-submit">
-                    CREATE PACKAGE →
-                </button>
-
-                <a href="{% url 'weddings:list' %}" class="wedding-form-cancel">
-                    CANCEL
-                </a>
+            <div class="wedding-form-intro">
+                <span>THE WEDDING COLLECTION</span>
+                <h2>Let's Begin Your Story</h2>
+                <p>Fill in the details below to create your wedding package.</p>
             </div>
-        </form>
 
-    </div>
+            <form method="POST" enctype="multipart/form-data" class="wedding-form" novalidate>
+                {% csrf_token %}
 
-</section>
+                {% if form.non_field_errors %}
+                    {{ form.non_field_errors }}
+                {% endif %}
+
+                {% for field in form %}
+                    {% if field.name != 'services' %}
+                        <p>
+                            {{ field.label_tag }}
+                            {{ field }}
+
+                            {% if field.help_text %}
+                                <span class="helptext">{{ field.help_text }}</span>
+                            {% endif %}
+
+                            {{ field.errors }}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+
+                <div class="wedding-services">
+                    <h3>Services</h3>
+                    <p>Select the services to include in your wedding package.</p>
+
+                    {% for category, services in form.grouped_services.items %}
+                        <details class="service-category">
+                            <summary>
+                            <span class="service-category-heading">
+                                <span class="service-category-icon">
+                                    {% if category == 'Photography' %}
+                                        <i class="bi bi-camera"></i>
+                                    {% elif category == 'Videography' %}
+                                        <i class="bi bi-camera-video"></i>
+                                    {% elif category == 'DJ' %}
+                                        <i class="bi bi-headphones"></i>
+                                    {% elif category == 'Decoration' %}
+                                        <i class="bi bi-flower1"></i>
+                                    {% endif %}
+                                </span>
+                                <span class="service-category-name">{{ category }}</span>
+                                <span class="service-category-count">({{ services|length }} services)</span>
+                            </span>
+                            </summary>
+
+                            <div class="service-category-options">
+                                {% for service in services %}
+                                    <label>
+                                        <input type="checkbox"
+                                               name="services"
+                                               value="{{ service.pk }}"
+                                               {% if service.pk|stringformat:"s" in form.selected_services %}checked{% endif %}>
+                                        {{ service.name }}
+                                    </label>
+                                {% endfor %}
+                            </div>
+                        </details>
+                    {% endfor %}
+
+                    {{ form.services.errors }}
+                </div>
+
+                <div class="wedding-form-actions">
+                    <button type="submit" class="wedding-form-submit">
+                        CREATE PACKAGE →
+                    </button>
+
+                    <a href="{% url 'weddings:list' %}" class="wedding-form-cancel">
+                        CANCEL
+                    </a>
+                </div>
+            </form>
+
+        </div>
+
+    </section>
 
 {% endblock %}

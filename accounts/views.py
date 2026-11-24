@@ -6,7 +6,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
-
+from accounts.utils import send_password_changed_email
 from accounts.forms import WeddingUserCreationForm, WeddingUserEditForm
 
 
@@ -65,6 +65,7 @@ class WeddingPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
 
     def form_valid(self, form):
         response = super().form_valid(form)
+        send_password_changed_email(self.request.user)
         messages.success(self.request, "Your password has been changed successfully!")
         return response
 
@@ -80,6 +81,11 @@ class WeddingPasswordResetDoneView(PasswordResetDoneView):
 class WeddingPasswordResetConfirmView(PasswordResetConfirmView):
     template_name = 'accounts/password-reset-confirm.html'
     success_url = reverse_lazy('accounts:reset-password-complete')
+
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        send_password_changed_email(self.user)
+        return response
 
 class WeddingPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'accounts/password-reset-complete.html'

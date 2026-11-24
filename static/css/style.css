@@ -2891,3 +2891,146 @@ body {
         width: 100%;
     }
 }
+
+/* ==============================
+   WEDDING INQUIRY
+============================== */
+
+.inquiry-section {
+    padding: 70px 20px;
+    background: #faf8f5;
+}
+
+.inquiry-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.inquiry-heading h1 {
+    font-size: 38px;
+    font-weight: 400;
+    margin: 15px 0;
+    color: #333;
+}
+
+.inquiry-heading p {
+    color: #777;
+}
+
+.inquiry-card {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px;
+    background: #fff;
+    border: 1px solid #e8e2da;
+    border-radius: 6px;
+}
+
+.inquiry-fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.inquiry-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.inquiry-full-width {
+    grid-column: 1 / -1;
+}
+
+.inquiry-field label {
+    font-size: 14px;
+    color: #444;
+}
+
+.inquiry-field input,
+.inquiry-field textarea,
+.inquiry-field select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd5cb;
+    border-radius: 4px;
+    background: #fff;
+    font: inherit;
+    box-sizing: border-box;
+}
+
+.inquiry-field textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+.inquiry-field input:focus,
+.inquiry-field textarea:focus {
+    outline: none;
+    border-color: #b49a78;
+}
+
+.inquiry-field .errorlist,
+.inquiry-form > .errorlist {
+    color: #b54444;
+    font-size: 13px;
+    padding-left: 0;
+    list-style: none;
+}
+
+.inquiry-submit-btn {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+    padding: 15px;
+    background: #b49a78;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.inquiry-submit-btn:hover {
+    background: #998060;
+}
+
+.inquiry-back {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #777;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+    .inquiry-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .inquiry-card {
+        padding: 25px;
+    }
+
+    .inquiry-heading h1 {
+        font-size: 28px;
+    }
+}
+
+.wedding-inquiry-btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 14px 28px;
+    background: #b49a78;
+    color: #fff;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    transition: background 0.3s;
+}
+
+.wedding-inquiry-btn:hover {
+    background: #998060;
+}

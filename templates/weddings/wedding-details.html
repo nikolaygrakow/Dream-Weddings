@@ -66,6 +66,11 @@
                     </div>
                 </div>
 
+                <a href="{% url 'inquiries:create-inquiry' wedding.pk %}"
+                   class="wedding-inquiry-btn">
+                    SEND INQUIRY
+                </a>
+
                 {% if perms.weddings.change_wedding or perms.weddings.delete_wedding %}
                     <div class="wedding-detail-actions">
                         {% if perms.weddings.change_wedding %}

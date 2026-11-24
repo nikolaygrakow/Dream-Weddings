@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %}Send Inquiry | Dream Weddings{% endblock %}
+
+{% block content %}
+
+<section class="inquiry-section">
+
+    <div class="inquiry-heading">
+        <span class="section-label">YOUR STORY STARTS HERE</span>
+        <h1>Let's Plan Your Dream Wedding</h1>
+        <p>Tell us a little about your special day.</p>
+    </div>
+
+    <div class="inquiry-card">
+
+        <form method="post" class="inquiry-form">
+            {% csrf_token %}
+
+            {{ form.non_field_errors }}
+
+            <div class="inquiry-fields">
+                {% for field in form %}
+                    <div class="inquiry-field {% if field.name == 'message' %}inquiry-full-width{% endif %}">
+                        {{ field.label_tag }}
+                        {{ field }}
+
+                        {% if field.help_text %}
+                            <small>{{ field.help_text }}</small>
+                        {% endif %}
+
+                        {{ field.errors }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <button type="submit" class="inquiry-submit-btn">
+                SEND INQUIRY
+            </button>
+
+            <a href="{% url 'weddings:details' view.wedding.pk %}"
+               class="inquiry-back">
+                ← BACK TO WEDDING PACKAGE
+            </a>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

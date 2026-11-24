@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView
+from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView, PasswordResetView, \
+    PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -66,3 +67,19 @@ class WeddingPasswordChangeView(LoginRequiredMixin, PasswordChangeView):
         response = super().form_valid(form)
         messages.success(self.request, "Your password has been changed successfully!")
         return response
+
+
+class WeddingPasswordResetView(PasswordResetView):
+    template_name = 'accounts/password-reset.html'
+    email_template_name = 'accounts/password-reset-email.html'
+    success_url = reverse_lazy('accounts:reset-password-done')
+
+class WeddingPasswordResetDoneView(PasswordResetDoneView):
+    template_name = 'accounts/password-reset-done.html'
+
+class WeddingPasswordResetConfirmView(PasswordResetConfirmView):
+    template_name = 'accounts/password-reset-confirm.html'
+    success_url = reverse_lazy('accounts:reset-password-complete')
+
+class WeddingPasswordResetCompleteView(PasswordResetCompleteView):
+    template_name = 'accounts/password-reset-complete.html'

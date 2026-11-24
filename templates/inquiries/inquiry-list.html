@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}My Inquiries | Dream Weddings{% endblock %}
+
+{% block content %}
+    <section class="my-inquiries-section">
+
+        <div class="my-inquiries-heading">
+            <span>YOUR WEDDING JOURNEY</span>
+            <h1>My Inquiries</h1>
+            <p>Keep track of your wedding inquiries and their current status.</p>
+        </div>
+
+        <div class="my-inquiries-grid">
+
+            {% for inquiry in inquiries %}
+                <article class="inquiry-card">
+
+                    <div class="inquiry-card-header">
+                        <h2>{{ inquiry.wedding }}</h2>
+
+                        <span class="inquiry-status {{ inquiry.status }}">
+                            {{ inquiry.get_status_display }}
+                        </span>
+                    </div>
+
+                    <div class="inquiry-card-info">
+                        <p>
+                            <strong>Couple:</strong>
+                            {{ inquiry.bride_name }} &amp; {{ inquiry.groom_name }}
+                        </p>
+
+                        <p>
+                            <strong>Wedding Date:</strong>
+                            {{ inquiry.wedding_date|date:"d F Y" }}
+                        </p>
+
+                        <p>
+                            <strong>Location:</strong>
+                            {{ inquiry.location }}
+                        </p>
+
+                        <p>
+                            <strong>Guests:</strong>
+                            {{ inquiry.guest_count }}
+                        </p>
+
+                        <p>
+                            <strong>Submitted:</strong>
+                            {{ inquiry.created_at|date:"d F Y" }}
+                        </p>
+                    </div>
+
+                </article>
+
+            {% empty %}
+                <div class="inquiries-empty">
+                    <h2>No inquiries yet</h2>
+
+                    <p>
+                        Your dream wedding starts with a little inspiration.
+                        Explore our wedding packages and send your first inquiry.
+                    </p>
+
+                    <a href="{% url 'weddings:list' %}" class="inquiry-explore-btn">
+                        EXPLORE WEDDINGS
+                    </a>
+                </div>
+            {% endfor %}
+
+        </div>
+
+    </section>
+{% endblock %}

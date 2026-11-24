@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, ListView
 
 from inquiries.forms import WeddingInquiryForm
 from inquiries.models import WeddingInquiry
@@ -31,3 +31,13 @@ class WeddingInquiryCreateView(LoginRequiredMixin, CreateView):
             'weddings:details',
             kwargs={'pk': self.wedding.pk}
         )
+
+class WeddingInquiryListView(LoginRequiredMixin, ListView):
+    model = WeddingInquiry
+    template_name = 'inquiries/inquiry-list.html'
+    context_object_name = 'inquiries'
+
+    def get_queryset(self):
+        return WeddingInquiry.objects.filter(
+            user=self.request.user
+        ).select_related('wedding').order_by('-created_at')

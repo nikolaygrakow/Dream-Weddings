@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Inquiry Details | Dream Weddings{% endblock %}
+
+{% block content %}
+
+    <section class="inquiry-details-section">
+
+        <div class="my-inquiries-heading">
+            <span>YOUR WEDDING JOURNEY</span>
+            <h1>Inquiry Details</h1>
+            <p>Every beautiful celebration begins with a plan.</p>
+        </div>
+
+        <div class="inquiry-details-card">
+
+            <div class="inquiry-details-header">
+                <h2>{{ inquiry.wedding }}</h2>
+
+                <span class="inquiry-status {{ inquiry.status }}">
+                    {{ inquiry.get_status_display }}
+                </span>
+            </div>
+
+            <div class="inquiry-details-grid">
+
+                <div>
+                    <span>Bride's Name</span>
+                    <p>{{ inquiry.bride_name }}</p>
+                </div>
+
+                <div>
+                    <span>Groom's Name</span>
+                    <p>{{ inquiry.groom_name }}</p>
+                </div>
+
+                <div>
+                    <span>Wedding Date</span>
+                    <p>{{ inquiry.wedding_date|date:"d F Y" }}</p>
+                </div>
+
+                <div>
+                    <span>Location</span>
+                    <p>{{ inquiry.location }}</p>
+                </div>
+
+                <div>
+                    <span>Number of Guests</span>
+                    <p>{{ inquiry.guest_count }}</p>
+                </div>
+
+                <div>
+                    <span>Submitted On</span>
+                    <p>{{ inquiry.created_at|date:"d F Y, H:i" }}</p>
+                </div>
+
+            </div>
+
+            <div class="inquiry-details-message">
+                <h3>Additional Information</h3>
+
+                {% if inquiry.message %}
+                    <p>{{ inquiry.message }}</p>
+                {% else %}
+                    <p>No additional information provided.</p>
+                {% endif %}
+            </div>
+
+            <div class="inquiry-details-actions">
+                <a href="{% url 'weddings:details' inquiry.wedding.pk %}"
+                   class="inquiry-explore-btn">
+                    VIEW WEDDING PACKAGE
+                </a>
+
+                <a href="{% url 'inquiries:my-inquiries' %}"
+                   class="inquiry-back-link">
+                    ← BACK TO MY INQUIRIES
+                </a>
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

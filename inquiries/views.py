@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView, ListView
+from django.views.generic import CreateView, ListView, DetailView
 
 from inquiries.forms import WeddingInquiryForm
 from inquiries.models import WeddingInquiry
@@ -41,3 +41,13 @@ class WeddingInquiryListView(LoginRequiredMixin, ListView):
         return WeddingInquiry.objects.filter(
             user=self.request.user
         ).select_related('wedding').order_by('-created_at')
+
+class WeddingInquiryDetailView(LoginRequiredMixin, DetailView):
+    model = WeddingInquiry
+    template_name = 'inquiries/inquiry-details.html'
+    context_object_name = 'inquiry'
+
+    def get_queryset(self):
+        return WeddingInquiry.objects.filter(
+            user=self.request.user
+        ).select_related('wedding')

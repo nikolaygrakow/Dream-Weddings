@@ -51,6 +51,11 @@
                         </p>
                     </div>
 
+                    <div class="inquiry-card-actions">
+                        <a href="{% url 'inquiries:inquiry-details' inquiry.pk %}">
+                            VIEW DETAILS →
+                        </a>
+                    </div>
                 </article>
 
             {% empty %}

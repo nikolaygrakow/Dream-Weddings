@@ -5,6 +5,8 @@ app_name = 'inquiries'
 
 urlpatterns = [
     path('create/<int:pk>/', views.WeddingInquiryCreateView.as_view(), name='create-inquiry'),
-    path('my-inquiries/', views.WeddingInquiryListView.as_view(), name='my-inquiries')
+    path('my-inquiries/', views.WeddingInquiryListView.as_view(), name='my-inquiries'),
+    path('inquiry/<int:pk>/', views.WeddingInquiryDetailView.as_view(), name='inquiry-details'),
+
 ]
 

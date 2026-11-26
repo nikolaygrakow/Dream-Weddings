@@ -23,6 +23,7 @@ class RegisterView(SuccessMessageMixin, CreateView):
 
 class WeddingLoginView(LoginView):
     template_name = 'accounts/login.html'
+    redirect_authenticated_user = True
 
     def form_valid(self, form):
         response = super().form_valid(form)

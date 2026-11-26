@@ -42,20 +42,30 @@
             </div>
 
             <div class="profile-card-footer">
-                <a href="{% url 'accounts:profile-edit' %}" class="profile-edit-button">
+                <a href="{% url 'accounts:profile-edit' %}"
+                   class="profile-edit-button">
                     Edit Profile
                 </a>
 
-                <a href="{% url 'accounts:change-password' %}" class="profile-edit-button">
+                <a href="{% url 'accounts:change-password' %}"
+                   class="profile-edit-button">
                     Change Password
                 </a>
-
 
                 <a href="{% url 'inquiries:my-inquiries' %}"
                    class="inquiry-explore-btn">
                     MY INQUIRIES
                 </a>
             </div>
+
+            {% if perms.inquiries.view_weddinginquiry %}
+                <div class="profile-management-actions">
+                    <a href="{% url 'inquiries:management' %}"
+                       class="inquiry-explore-btn">
+                        INQUIRY MANAGEMENT
+                    </a>
+                </div>
+            {% endif %}
         </div>
 
     </div>

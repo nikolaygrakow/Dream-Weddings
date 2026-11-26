@@ -3349,3 +3349,234 @@ body {
 .inquiry-card-actions a:hover {
     color: #302A26;
 }
+
+/* ==================== INQUIRY MANAGEMENT ==================== */
+
+.inquiry-management-section {
+    background-color: #F5F1EB;
+    padding: 70px 5% 90px;
+    min-height: 65vh;
+}
+
+.inquiry-management-container {
+    max-width: 1350px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+    border: 1px solid #E8E0D5;
+    border-radius: 8px;
+    padding: 30px;
+}
+
+.inquiry-management-header {
+    padding-bottom: 25px;
+}
+
+.inquiry-management-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    font-weight: 500;
+    color: #302A26;
+    margin: 0;
+}
+
+.inquiry-table-wrapper {
+    overflow-x: auto;
+}
+
+.inquiry-management-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+}
+
+.inquiry-management-table thead {
+    background-color: #302A26;
+    color: #FFFFFF;
+}
+
+.inquiry-management-table th {
+    padding: 18px 15px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.inquiry-management-table td {
+    padding: 22px 15px;
+    font-size: 13px;
+    color: #302A26;
+    border-bottom: 1px solid #E8E0D5;
+    vertical-align: middle;
+}
+
+.inquiry-management-table tbody tr {
+    transition: background-color 0.3s ease;
+}
+
+.inquiry-management-table tbody tr:hover {
+    background-color: #FAF8F5;
+}
+
+.inquiry-management-table td strong {
+    display: block;
+    font-weight: 600;
+}
+
+.inquiry-management-table td small {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    color: #82766B;
+}
+
+.management-action-link {
+    color: #A48B70;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+}
+
+a.management-action-link:hover {
+    color: #302A26;
+}
+
+.inquiry-management-table .management-empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: #82766B;
+}
+
+/* Responsive */
+
+@media (max-width: 768px) {
+    .inquiry-management-section {
+        padding: 45px 4%;
+    }
+
+    .inquiry-management-container {
+        padding: 15px;
+    }
+
+    .inquiry-management-table {
+        min-width: 850px;
+    }
+}
+
+/* ==================== INQUIRY MANAGEMENT DETAILS ==================== */
+
+.management-customer-info {
+    background-color: #FAF8F5;
+    border: 1px solid #E8E0D5;
+    border-radius: 6px;
+    padding: 25px;
+    margin-top: 25px;
+}
+
+.management-customer-info h3,
+.management-decision-section h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #302A26;
+    margin: 0 0 15px;
+}
+
+.management-customer-info .inquiry-details-grid {
+    padding: 10px 0 0;
+    border: none;
+}
+
+.management-customer-info p {
+    overflow-wrap: anywhere;
+}
+
+.management-decision-section {
+    margin-top: 30px;
+    padding: 30px 0;
+    border-top: 1px solid #E8E0D5;
+}
+
+.management-decision-section p {
+    font-size: 14px;
+    color: #82766B;
+    line-height: 1.7;
+    margin-bottom: 25px;
+}
+
+.management-decision-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.management-approve-btn,
+.management-reject-btn {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    color: #FFFFFF;
+}
+
+.management-approve-btn {
+    background-color: #527B5B;
+}
+
+.management-approve-btn:hover {
+    background-color: #3E6046;
+}
+
+.management-reject-btn {
+    background-color: #AC5D5D;
+}
+
+.management-reject-btn:hover {
+    background-color: #904747;
+}
+
+.management-approve-btn:disabled,
+.management-reject-btn:disabled {
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .management-customer-info {
+        padding: 20px;
+    }
+
+    .management-decision-actions {
+        flex-direction: column;
+    }
+
+    .management-decision-actions button {
+        width: 100%;
+    }
+}
+
+/* Profile Management Actions */
+
+.profile-management-actions {
+    display: flex;
+    justify-content: center;
+    padding: 20px 30px;
+    border-top: 1px solid #E8E0D5;
+    background-color: #FAF8F5;
+}
+
+/* Inquiry Profile Navigation */
+
+.inquiry-profile-navigation {
+    text-align: center;
+    margin-bottom: 30px;
+}

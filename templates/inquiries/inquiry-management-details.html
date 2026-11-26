@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+{% block title %}Inquiry Management Details | Dream Weddings{% endblock %}
+
+{% block content %}
+
+    <section class="inquiry-details-section">
+
+        <div class="my-inquiries-heading">
+            <span>WEDDING MANAGEMENT</span>
+            <h1>Inquiry Details</h1>
+            <p>Review the wedding inquiry and manage its status.</p>
+        </div>
+
+        <div class="inquiry-details-card">
+
+            <div class="inquiry-details-header">
+                <h2>{{ inquiry.wedding }}</h2>
+
+                <span class="inquiry-status {{ inquiry.status }}">
+                    {{ inquiry.get_status_display }}
+                </span>
+            </div>
+
+            <div class="management-customer-info">
+
+                <h3>Customer Information</h3>
+
+                <div class="inquiry-details-grid">
+
+                    <div>
+                        <span>Customer</span>
+                        <p>{{ inquiry.user.get_full_name|default:inquiry.user.email }}</p>
+                    </div>
+
+                    <div>
+                        <span>Email Address</span>
+                        <p>{{ inquiry.user.email }}</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="inquiry-details-grid">
+
+                <div>
+                    <span>Inquiry ID</span>
+                    <p>#{{ inquiry.pk }}</p>
+                </div>
+
+                <div>
+                    <span>Submitted On</span>
+                    <p>{{ inquiry.created_at|date:"d F Y, H:i" }}</p>
+                </div>
+
+                <div>
+                    <span>Bride Name</span>
+                    <p>{{ inquiry.bride_name }}</p>
+                </div>
+
+                <div>
+                    <span>Groom Name</span>
+                    <p>{{ inquiry.groom_name }}</p>
+                </div>
+
+                <div>
+                    <span>Wedding Date</span>
+                    <p>{{ inquiry.wedding_date|date:"d F Y" }}</p>
+                </div>
+
+                <div>
+                    <span>Location</span>
+                    <p>{{ inquiry.location }}</p>
+                </div>
+
+                <div>
+                    <span>Number of Guests</span>
+                    <p>{{ inquiry.guest_count }}</p>
+                </div>
+
+            </div>
+
+            <div class="inquiry-details-message">
+                <h3>Additional Information</h3>
+
+                <p>{{ inquiry.message|default:"No additional information provided." }}</p>
+            </div>
+
+            <div class="management-decision-section">
+
+                <h3>Manage Inquiry</h3>
+
+                {% if inquiry.status == 'pending' %}
+
+                    <p>Review the information above before approving or rejecting this inquiry.</p>
+
+                    {% if perms.inquiries.change_weddinginquiry %}
+
+                        <form method="post"
+                              action="{% url 'inquiries:update-status' inquiry.pk %}"
+                              class="management-decision-actions">
+                            {% csrf_token %}
+
+                            <button type="submit" name="status" value="approved"
+                                    class="management-approve-btn">
+                                APPROVE INQUIRY
+                            </button>
+
+                            <button type="submit" name="status" value="rejected"
+                                    class="management-reject-btn">
+                                REJECT INQUIRY
+                            </button>
+                        </form>
+
+                    {% else %}
+                        <p>You do not have permission to change the inquiry status.</p>
+                    {% endif %}
+
+                {% else %}
+
+                    <p>This inquiry has already been processed.</p>
+
+                {% endif %}
+
+            </div>
+
+            <div class="inquiry-details-actions">
+
+                <a href="{% url 'weddings:details' inquiry.wedding.pk %}"
+                   class="inquiry-explore-btn">
+                    VIEW WEDDING PACKAGE
+                </a>
+
+                <a href="{% url 'inquiries:management' %}"
+                   class="inquiry-back-link">
+                    ← BACK TO MANAGEMENT
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+{% endblock %}

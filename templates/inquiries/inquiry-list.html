@@ -11,6 +11,13 @@
             <p>Keep track of your wedding inquiries and their current status.</p>
         </div>
 
+        <div class="inquiry-profile-navigation">
+            <a href="{% url 'accounts:profile-details' %}"
+               class="inquiry-back-link">
+                ← BACK TO PROFILE
+            </a>
+        </div>
+
         <div class="my-inquiries-grid">
 
             {% for inquiry in inquiries %}
